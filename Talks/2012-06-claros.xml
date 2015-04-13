@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" 
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:claros="http://purl.org/NET/Claros/vocab#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Where is CLAROS and its data?</title>
+        <author>Sebastian Rahtz, <lb/> Head of Information and Support
+	Group,<lb/> Oxford University Computing Services</author>
+      </titleStmt>
+      <editionStmt>
+        <edition>
+          <date>Oxford, June 30th 2012</date>
+        </edition>
+      </editionStmt>
+      <publicationStmt>
+        <publisher>University of Oxford</publisher>
+        <availability>
+          <p>Freely available for use and derivative works under a Creative Commons Attribution
+            license.</p>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <p>earlier talks</p>
+      </sourceDesc>
+    </fileDesc>
+    <revisionDesc>
+      <change>
+        <date>$LastChangedDate: 2011-01-21 12:02:51 +0000 (Fri, 21 Jan 2011) $.</date>
+        <name>$LastChangedBy: rahtz $</name>
+        <note>$LastChangedRevision: 511 $</note>
+      </change>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <body>
+<div>
+<head>Summary of data</head>
+<table>
+<row><cell>arachne</cell><cell>Arachne</cell><cell>185119 objects</cell></row>
+<row><cell>ashmol</cell><cell>Jameel Collection, Ashmolean</cell><cell>2316 objects</cell></row>
+<row><cell>beazley</cell><cell>Beazley Archive</cell><cell>130960 objects</cell></row>
+<row><cell>bsa</cell><cell>British School at Athens </cell><cell>(pending)</cell></row>
+<row><cell>bsr</cell><cell>British School at Rome, photographs and plans</cell><cell>16043 objects</cell></row>
+<row><cell>creswell</cell><cell>Creswell Photographic Archive, Ashmolean</cell><cell>6521 objects</cell></row>
+<row><cell>cycladic</cell><cell>Cycladic Museum, Athens</cell><cell>348 objects</cell></row>
+<row><cell>lgpn</cell><cell>Lexicon of Greek Personal Names</cell><cell>251821 people</cell></row>
+<row><cell>limc</cell><cell>LIMC Paris </cell><cell>4724 objects</cell></row>
+<row><cell>limcbasel</cell><cell>LIMC Basel</cell><cell>55852 objects</cell></row>
+<row><cell>metamorphoses</cell><cell>Gazetteer</cell><cell> 9396 places (6325 geolocated)</cell></row>
+<row><cell>oxrep</cell><cell>Oxford Roman Economy project</cell><cell>(pending)</cell></row>
+<row><cell>waa</cell><cell>World of Ancient Art </cell><cell>406 places</cell></row>
+</table>
+</div>
+
+<div>
+<head>Partner data provision</head>
+<table>
+<row><cell>arachne</cell><cell>Arachne</cell><cell>OAI feed</cell></row>
+<row><cell>ashmol</cell><cell>Jameel Collection, Ashmolean</cell><cell>static file</cell></row>
+<row><cell>beazley</cell><cell>Beazley Archive</cell><cell>REST retrieval</cell></row>
+<row><cell>bsa</cell><cell>British School at Athens </cell><cell>(pending)</cell></row>
+<row><cell>bsr</cell><cell>British School at Rome, photographs and plans</cell><cell>static file</cell></row>
+<row><cell>creswell</cell><cell>Creswell Photographic Archive, Ashmolean</cell><cell>static file</cell></row>
+<row><cell>cycladic</cell><cell>Cycladic Museum, Athens</cell><cell>static file</cell></row>
+<row><cell>lgpn</cell><cell>Lexicon of Greek Personal Names</cell><cell>REST retrieval</cell></row>
+<row><cell>limc</cell><cell>LIMC Paris </cell><cell>database dump, conversion to file</cell></row>
+<row><cell>limcbasel</cell><cell>LIMC Basel</cell><cell>database dump, conversion to file</cell></row>
+<row><cell>metamorphoses</cell><cell>Gazetteer</cell><cell>(natively managed)</cell></row>
+<row><cell>oxrep</cell><cell>Oxford Roman Economy project</cell><cell>(pending)</cell></row>
+<row><cell>trendall</cell><cell>Trendall Archive</cell><cell>(unclear)</cell></row>
+<row><cell>waa</cell><cell>World of Ancient Art </cell><cell>database dump, conversion</cell></row>
+</table>
+</div>
+
+<div>
+<head>Workflow</head>
+<p><graphic url="workflow.png"/></p>
+</div>
+
+<div>
+<head>Simple mapping of place names</head>
+<egXML xmlns="http://www.tei-c.org/ns/Examples">
+  <change from="abu-simbel" to="egypt-abu-simbel"/>
+  <change from="academy" to="athens-academy"/>
+  <change from="acerra" to="italy-acerra"/>
+  <change from="acharnai" to="attica-acharnai"/>
+  <change from="aegina" to="aigina"/>
+  <change from="aegypten" to="egypt"/>
+  <change from="agios-ioannis" to="athens-agios-ioannis"/>
+  <change from="agli" to="aglie"/>
+  <change from="agrigento" to="sicily-agrigento"/>
+  <change from="aidinjik" to="edincik"/>
+</egXML>
+</div>
+
+<div>
+  <head>Name mapping procedure</head>
+  <list>
+    <item>Does <gi>E53_Place</gi> have a geolocation? OK</item>
+    <item>Normalize place name. Translate space to -, lower-case,
+    etc</item>
+    <item>Does name of place match a known place? link to that
+    place</item>
+    <item>Does name of place <emph>partially</emph> match a place?
+    create an <gi>E53_Place</gi> which has a <gi>P89_falls_within</gi>
+    linking to the half-match. Example <q>athens-kerameikos</q></item>
+    <item>Does <gi>E53_Place</gi> have a geonames link? get lat/long
+    from www.geonames.org</item>
+  </list>
+</div>
+
+<div>
+  <head>Typology</head>
+<table>
+<row><cell>architecture</cell><cell>Architectural Sculpture</cell></row>
+<row><cell>bound-volume</cell><cell>Bound volume</cell></row>
+<row><cell>mirror</cell><cell>Mirror</cell></row>
+<row><cell>coin</cell><cell>Coins</cell></row>
+<row><cell>drawing</cell><cell>Eastern Drawing</cell></row>
+<row><cell>eastern-ceramic</cell><cell>Eastern Ceramic</cell></row>
+<row><cell>eastern-bronze</cell><cell>Eastern Bronze</cell></row>
+<row><cell>eastern-painting</cell><cell>Eastern Painting</cell></row>
+<row><cell>engraving</cell><cell>Engraved print</cell></row>
+<row><cell>gem-cameo</cell><cell>Gems and Cameos</cell></row>
+<row><cell>inscription</cell><cell>Inscription</cell></row>
+<row><cell>jewellery</cell><cell>Jewellery</cell></row>
+<row><cell>menhir</cell><cell>Menhir</cell></row>
+<row><cell>mosaic</cell><cell>Mosaic</cell></row>
+<row><cell>painting</cell><cell>Wall Painting</cell></row>
+<row><cell>papyrus</cell><cell>Papyrus</cell></row>
+<row><cell>aerialphotograph</cell><cell>Aerial Photograph</cell></row>
+<row><cell>photograph</cell><cell>Photograph</cell></row>
+<row><cell>etching</cell><cell>Etching</cell></row>
+<row><cell>plan</cell><cell>Site plan</cell></row>
+<row><cell>map</cell><cell>Map</cell></row>
+<row><cell>portrait</cell><cell>Portrait</cell></row>
+<row><cell>print</cell><cell>Eastern Print</cell></row>
+<row><cell>sarcophagus</cell><cell>Sarcophagus</cell></row>
+<row><cell>statuette</cell><cell>Statuette</cell></row>
+<row><cell>statue</cell><cell>Statue</cell></row>
+<row><cell>textile</cell><cell>Textile</cell></row>
+<row><cell>weapon</cell><cell>Weapon</cell></row>
+<row><cell>western-bronze</cell><cell>Western Bronze</cell></row>
+<row><cell>western-ceramic</cell><cell>Western Ceramic</cell></row>
+<row><cell>western-sculpture</cell><cell>Western Sculpture</cell></row>
+</table>
+</div>
+
+<div>
+<head>Mapping of types</head>
+<egXML xmlns="http://www.tei-c.org/ns/Examples" rend="tiny">
+  <type url="http://arachne.uni-koeln.de/vocabulary/objectType#-lebewesen" type="other"/>
+  <type url="http://arachne.uni-koeln.de/vocabulary/objectType#anthropomorpher" type="other"/>
+  <type url="http://arachne.uni-koeln.de/vocabulary/objectType#architektur" type="architecture"/>
+  <type url="http://arachne.uni-koeln.de/vocabulary/objectType#attischer" type="western-ceramic"/>
+  <type url="http://arachne.uni-koeln.de/vocabulary/objectType#bauornamentik" type="architecture"/>
+  <type url="http://id.clarosnet.org/type/Man-Made_Object/cartographic" type="map"/>
+  <type url="http://id.clarosnet.org/type/Man-Made_Object/graphic" type="graphic"/>
+  <type url="http://id.clarosnet.org/type/Man-Made_Object/map" type="map"/>
+  <type url="http://purl.org/NET/Claros/vocab#Ashmolean/Category/bound_volume" type="bound-volume"/>
+  <type url="http://purl.org/NET/Claros/vocab#Ashmolean/Category/ceramic" type="western-ceramic"/>
+  <type url="http://purl.org/NET/Claros/vocab#Ashmolean/Category/drawing" type="drawing"/>
+</egXML>
+</div>
+
+<div>
+  <head>Technologies?</head>
+  <list type="gloss">
+    <label>Servers</label>
+    <item>1 Linux Ubuntu, 1 Windows</item>
+    <label>Normalize phase</label>
+    <item>XSLT manipulation of RDF/XML</item>
+    <label>Data inference</label>
+    <item>SPARQL queries in Python wrapper</item>
+    <label>Triple store and SPARQL endpoint</label>
+    <item>Jena, in Fuseki packaging</item>
+    <label>Public web site</label>
+    <item>MS SQL server and ASP pages</item>
+    <label>Data web site</label>
+    <item>Humfrey (local open source) and extra Python</item>
+  </list>
+</div>
+
+<div>
+  <head>What <hi>does</hi> work?</head>
+  <list>
+    <item>Mapping to CIDOC CRM RDF</item>
+    <item>Conversion to SQL database to drive user-friendly web site</item>
+    <item>Loading into triplestore with SPARQL endpoint</item>
+    <item>Map-based display and textual searching</item>
+    <item>Export to Pelagios</item>
+  </list>
+</div>
+
+
+<div>
+  <head>What works, but not as well we would like?</head>
+  <list>
+    <item>Provision of data by automated means</item>
+    <item>Joining up places internally</item>
+    <item>Mapping to common taxonomy</item>
+    <item>Mapping places to Pleiades</item>
+  </list>
+</div>
+
+
+<div>
+  <head>What does <hi>not</hi> work yet?</head>
+  <list>
+    <item>Updating of individual datasets by partners</item>
+    <item>Location-based searching</item>
+    <item>Managing periods intelligently</item>
+  </list>
+</div>
+
+<div>
+  <head>What can we do with the places component of CLAROS (1)?</head>
+  <list>
+    <item>Map the majority of commonly-occurring find spots to a
+    geolocation (at the city level)</item>
+    <item>Map some current location places to a geolocation</item>
+    <item>Access c.125000 objects via find spot (out of c.400000)</item>
+    <item>Access c.161000 people via a birth place (out of c.250000)</item>
+  </list>
+</div>
+
+<div>
+  <head>What can we do with the places component of CLAROS (2)?</head>
+  <list>
+    <item>Show results of search on Google/Open StreetMap maps</item>
+    <item>Select places on Google/Open StreetMap maps</item>
+    <item>Find places by name browse</item>
+    <item>Find places by free text search combined with material/type/title/name</item>
+    <item>Find objects nearby (by radius) current object</item>
+    <item>Find places nearby current place</item>
+  </list>
+      <p>Searches can be accessed by REST url</p>
+</div>
+
+<div>
+  <head>Known places</head>
+  <list>
+    <item>c.9300 places known</item>
+    <item>c.6200 places geolocated</item>
+    <item>c.1500 places linked to Pleiades</item>
+    <item>c.4330 places linked to geonames.org</item>
+  </list>  
+</div>
+
+<div>
+  <head>What remains to be done at the data level?</head>
+  <list>
+    <item>Resolving duplicates
+    <list>
+      <item>same geonames ID? done.</item>
+      <item>same pleiades ID? done.</item>
+      <item>same name? done.</item>
+      <item>similar geolocation. TODO.</item>
+      <item>similar name. TODO.</item>
+    </list>
+    </item>
+    <item>Finding new geolocations
+    <list>
+      <item>simple name, waiting to be found. eg Dayton / Ohio/</item>
+      <item>obscure, but known, name. eg Maiori Nuraghe,  Sardinia</item>
+      <item>obscure place. eg Yukarõ Dodurga</item>
+      <item>confusing names. eg Romische Stadt von Ampurias / Gerona (P) / Cataluna</item>
+      <item>sites within known places. eg Rome, In der Ecke eines
+      Hauses nahe S. Maria in Pace</item>
+    </list>
+    </item>
+  </list>
+  <p>All this assumes that the partners do not provide geonames or
+  Pleiades links</p>
+</div>
+
+<div>
+  <head>Importantly</head>
+  <list>
+    <item><hi>Feed back mappings to data partners!!</hi></item>
+    <item>Add periodization to place names</item>
+  </list>
+</div>
+
+<div>
+  <head>What remains to be done at the interface level?</head>
+  <list>
+    <item>Browsing by place hierarchy</item>
+    <item>Click on map to find places</item>
+    <item>Filter places by date range of objects/people</item>
+  </list>
+</div>
+    </body>
+  </text>
+</TEI>

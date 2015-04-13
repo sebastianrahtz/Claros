@@ -1,0 +1,44 @@
+DELETE {        ?a ?b ?c } where { ?a ?b ?c }
+
+
+CONSTRUCT {     
+     ?image crm:P62_depicts ?monument .
+     ?monument crm:P87_is_identified_by ?name  .
+     ?monument crm:P2_has_type ?type .
+    
+}
+where
+{
+   ?monument rdf:type crm:E18_Physical_Thing .	
+   ?monument crm:P87_is_identified_by ?appel  .
+   ?appel rdfs:label ?name .
+   ?monument crm:P2_has_type ?type .
+}
+
+     
+
+SELECT  ?name (count (?image) as ?images) WHERE {
+     ?monument rdf:type crm:E18_Physical_Thing .
+     ?image crm:P62_depicts ?monument .
+     ?monument crm:P87_is_identified_by ?appel  .
+     ?appel rdfs:label ?name }
+group by ?name
+ORDER BY DESC(?monument)
+
+
+SELECT  ?kw (count (?monument) as ?mons) WHERE {
+     ?monument rdf:type crm:E18_Physical_Thing .
+     ?monument  crm:P128_carries ?io .
+     ?io rdf:type crm:E73_Information_Object .
+     ?io crm:P120_is_about ?lab .
+     ?lab rdfs:label ?kw }
+group by ?kw
+ORDER BY ASC(?kw)
+
+
+classtree
+forcedirectedgraph
+hypertree
+ontologygraph
+ngraph
+spacetree

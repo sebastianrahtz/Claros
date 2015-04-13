@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:claros="http://purl.org/NET/Claros/vocab#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>CLAROS: experiences in integrating  disparate cultural
+	heritage resources</title>
+        <author>Sebastian Rahtz,<lb/>Chief Data Architect <lb/> Director (Research) of Academic
+	IT,<lb/>Oxford University IT Services</author>
+      </titleStmt>
+      <editionStmt>
+        <edition>
+          <date>Workshop on Digital Cultural Heritage, April 8th,
+	  2015. Center for Art and Archaeology of American Institute
+	  of Indian Studies in collaboration with Oxford University
+</date>
+        </edition>
+      </editionStmt>
+      <publicationStmt>
+        <publisher>University of Oxford</publisher>
+        <availability>
+          <p>Freely available for use and derivative works under a Creative Commons Attribution
+            license.</p>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <p>earlier talks</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div>
+        <head>The context</head>
+        <list>
+          <item>Give you some background on who I am </item>
+          <item>Explain how the CLAROS project fits into the  University of Oxford</item>
+          <item>Show what CLAROS has tried to achieve</item>
+          <item>Examine what lessons we can learn today</item>
+        </list>
+        <div>
+          <head>Sebastian Rahtz</head>
+          <list>
+            <item>Chief Data Architect for IT Services (University-wide
+	  data schemas and principles)</item>
+            <item>Directer of Academic IT (teaching and learning,
+	  research support, virtual learning environment, podcasting,
+	  social media) for IT Services</item>
+            <item>Overseeing technical work on CLAROS since 2008</item>
+            <item>Taught <hi rend="italic">Archaeological Computing</hi> course at Pune in  1992</item>
+	    <item>Lecturer in <q>Humanities Computing</q> at Southampton in 1980s</item>
+            <item>Worked as an archaeologist in Britain in the 1970s</item>
+          </list>
+        </div>
+        <div>
+          <head>The CLAROS programme</head>
+          <p>CLAROS is an Oxford-based international collaboration
+	  working on:
+          <list type="ordered"><item>Development of a humanities data web combining
+	    leading classical art history and
+	    related databases</item><item>Demonstration interfaces to
+	  explore world cultural heritage</item><item>Innovative searching based on shape analysis</item><item>Large-scale database providing a testbed for performance research</item><item>Changing the approach to data discovery by development of a conversational Companion</item></list></p>
+        </div>
+        <div>
+          <head>CLAROS: partners</head>
+          <list>
+            <item>University of Oxford – Beazley Archive of pottery and gems; Lexicon of Greek Personal Names</item>
+            <item>University of Cologne – Research Sculpture Archive</item>
+            <item>German Archaeological Institute - photographs</item>
+            <item>University of Paris X - Lexicon Iconographicum Mythologiae Classicae</item>
+            <item>University of Grenoble - Lexicon Iconographicum Mythologiae Classicae</item>
+            <item>Ashmolean Museum - Jameel Islamic Collection;   Creswell   Photographic Collection</item>
+            <item>British School at Rome - antiquarian photographs and prints</item>
+            <item>Cycladic Museum, Athens - Cycladic art</item>
+          </list>
+          <p>The minimal entry criteria are openly-licensed data, and persistent URIs for records.</p>
+        </div>
+        <div>
+          <head>How CLAROS fits into the University of Oxford</head>
+          <p>
+            <graphic url="images/clarosatoxford.png"/>
+          </p>
+        </div>
+        <div>
+          <head>A combining theme: Digital Humanities</head>
+          <p>
+            <graphic url="images/dhoxss2015.png"/>
+          </p>
+        </div>
+        <div>
+          <head>CLAROS in the context of academic research data management</head>
+          <p>Our aim is to help our academic researchers:
+        <list><item>publish an <hi>index</hi> to resources across a wide range of the humanities by (at least) minimal mapping to a common standard</item><item>create a neutral <hi>data format</hi> which can be archived</item><item>see their work and data as <hi>addressable resources</hi></item><item>make use of off-the-shelf, easily-maintained, and powerful <hi>query systems</hi> and <hi>visualizations</hi></item><item>put their work in the same spectrum as the rest of the cultural heritage sector</item></list>
+	and thus meet the increasingly stringent <hi>requirements of funders</hi>.
+	</p>
+        </div>
+      </div>
+      <div>
+        <head>The principles of CLAROS</head>
+        <list type="ordered">
+          <item>data can be <hi>shared</hi> without compromising ownership, scholarship and research</item>
+          <item><hi>linked</hi> scholarly data will always be more valuable than data in silos</item>
+          <item>cultural heritage data from museums and universities
+	  is <hi>relevant</hi> in learning, leisure, and politics at
+	  all levels</item>
+          <item>new data <hi>exploration, searching, and visualization</hi>
+	  techniques are an essential component of modern cultural
+	  heritage</item>
+        </list>
+        <div>
+          <head>Thinking about data in the modern world</head>
+          <list type="gloss">
+            <label>The oldest approach</label>
+            <item>Collect data, put it on index cards, read cards, write a book. <hi>END</hi></item>
+            <label>The old approach</label>
+            <item>Collect data, manipulate it using Access or Excel,
+	    write a book, lose floppy disks. <hi>END</hi></item>
+            <label>The newer approach</label>
+            <item>Collect the data, put it in a MySQL database, write
+	    a web front end with search boxes and browsing, archive
+	    database backup files. <hi>END</hi>.</item>
+            <label>The best approach</label>
+            <item>Collect data, share it with others, look at their
+	    data, write a book, leave the data available for the next
+	    generation. <hi>NO END</hi></item>
+          </list>
+        </div>
+        <div>
+          <head>Reminder of key concepts</head>
+          <list type="ordered">
+            <item><hi>Open</hi>: not the same as free, but <hi>talking
+	    the same language</hi>, agreeing  on common
+	    concepts</item>
+            <item><hi>Using the Web</hi>: using a single world-wide
+	    system of referring to things, people, places, etc</item>
+            <item><hi>Linking</hi>: expressing what we know in terms of
+	    those references.</item>
+          </list>
+        </div>
+        <div>
+          <head>Example: a photograph</head>
+          <p>
+            <graphic url="images/photoq.png"/>
+          </p>
+        </div>
+
+        <div>
+          <head>Starting to link the photograph</head>
+          <p>
+            <graphic url="images/photoq2.png"/>
+          </p>
+        </div>
+      </div>
+      <div>
+        <head>CLAROS results</head>
+        <p>
+          <graphic url="Images/clarosexplorer.png"/>
+        </p>
+        <div>
+          <head>CLAROS data web</head>
+          <p>
+            <graphic url="Images/dataclaros.png"/>
+          </p>
+        </div>
+        <div>
+          <head>CLAROS geographic coverage</head>
+          <p>
+            <graphic url="Images/clarosdataplaces.png"/>
+          </p>
+        </div>
+        <div>
+          <head>Searching nearby a coordinate</head>
+          <p>
+            <graphic url="Images/clarosdatanearby.png"/>
+          </p>
+        </div>
+        <div>
+          <head>Summary of data</head>
+          <table>
+            <row>
+              <cell>Arachne (sculpture)</cell>
+              <cell>185119 objects</cell>
+            </row>
+            <row>
+              <cell>Jameel Collection (Eastern art)</cell>
+              <cell>2316 objects</cell>
+            </row>
+            <row>
+              <cell>Beazley Archive (Greek pottery)</cell>
+              <cell>130960 objects</cell>
+            </row>
+            <row>
+              <cell>British School at Rome (photographs and plans)</cell>
+              <cell>16043 objects</cell>
+            </row>
+            <row>
+              <cell>Creswell (historical photographs)</cell>
+              <cell>6521 objects</cell>
+            </row>
+            <row>
+              <cell>Cycladic Museum, Athens</cell>
+              <cell>348 objects</cell>
+            </row>
+            <row>
+              <cell>Lexicon of Greek Personal Names</cell>
+              <cell>251821 people</cell>
+            </row>
+            <row>
+              <cell>LIMC  (mythology in the plastic arts)</cell>
+              <cell>55852 objects</cell>
+            </row>
+          </table>
+        </div>
+        <div>
+          <head>Example: aerial photograph from British School at
+	Rome</head>
+          <p>
+            <graphic url="Images/rusellae-orig.png"/>
+          </p>
+        </div>
+      </div>
+      <div>
+        <head>Looking at CLAROS in different ways</head>
+        <p>Image-based searching</p>
+        <p>
+          <graphic url="Images/imagerecognition.jpg"/>
+        </p>
+        <div>
+          <head>Image search</head>
+          <p>
+            <graphic url="Images/imagesearch.png"/>
+          </p>
+        </div>
+        <div>
+          <head>Shape representation</head>
+          <p>
+            <graphic url="images/shaperepresentation.jpg"/>
+          </p>
+        </div>
+        <div>
+          <head>Vase shape space</head>
+          <p>
+            <graphic height="80%" url="images/vasespace.jpg"/>
+          </p>
+        </div>
+        <div>
+          <head>Compute three nearest neighbours for each vase</head>
+          <p>
+            <graphic width="80%" url="images/vaseneighbours.jpg"/>
+          </p>
+        </div>
+        <div>
+          <head>Search by visual words</head>
+          <p>
+            <graphic url="images/visual5.png"/>
+          </p>
+        </div>
+
+	<div>
+          <head>Conclusions</head>
+	  <list>
+	    <item>CLAROS is an experimental platform in semantic web, in
+	    collaboration, and in technology</item>
+	    <item>CLAROS is not intended as a production
+	    service</item>
+	    <item>CLAROS demonstrates that the CRM approach works</item>
+	  </list>
+	</div>
+      </div>
+    </body>
+  </text>
+</TEI>

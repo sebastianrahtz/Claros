@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" 
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:claros="http://purl.org/NET/Claros/vocab#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Integrating disparate resources using a linked data approach</title>
+        <author>Sebastian Rahtz, <lb/> Head of Information and Support
+	Group,<lb/> Oxford University Computing Services<lb/>
+	[for <emph>DH Briefings, Trinity 2012]</emph>]</author>
+      </titleStmt>
+      <editionStmt>
+        <edition>
+          <date>Oxford, May 22nd 2012</date>
+        </edition>
+      </editionStmt>
+      <publicationStmt>
+        <publisher>University of Oxford</publisher>
+        <availability>
+          <p>Freely available for use and derivative works under a Creative Commons Attribution
+            license.</p>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <p>earlier talks</p>
+      </sourceDesc>
+    </fileDesc>
+    <revisionDesc>
+      <change>
+        <date>$LastChangedDate: 2011-01-21 12:02:51 +0000 (Fri, 21 Jan 2011) $.</date>
+        <name>$LastChangedBy: rahtz $</name>
+        <note>$LastChangedRevision: 511 $</note>
+      </change>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <body>
+      
+	<div>
+	  <head>A database is not just for Christmas</head>
+	  <list type="gloss">
+	    <label>The oldest approach</label>
+	    <item>Collect data, put it on index cards, read cards, write a book. <hi>END</hi></item>
+	    <label>The old approach</label>
+	    <item>Collect data, manipulate it using Access or Excel,
+	    write a book, lose floppy disks. <hi>END</hi></item>
+	    <label>The newer approach</label>
+	    <item>Collect the data, put it in a MySQL database, write
+	    a web front end with search boxes and browsing, archive
+	    database backup files. <hi>END</hi>.</item>
+	    <label>The best approach</label>
+	    <item>Collect data, share it with others, look at their
+	    data, write a book, leave the data available for the next
+	    generation. <hi>NO END</hi></item>
+	  </list>
+	</div>
+
+        <div>
+          <head>The CLAROS programme</head>
+	  <p>CLAROS is an Oxford-based international collaboration
+	  working on
+          <list type="ordered">
+            <item>Development of a humanities dataweb combining leading art history and
+	    related databases</item>
+            <item>Demonstration interfaces to explore world art</item>
+            <item>Innovative searching based on shape analysis</item>
+            <item>Large-scale RDF database providing a testbed for performance research</item>
+            <item>Changing the approach to data discovery by development of a conversational Companion</item>
+          </list></p>
+        </div>
+
+	<div>
+	  <head>CLAROS web</head>
+	  <p><graphic url="Images/clarosexplorer.png"/></p>
+	</div>
+
+      <div>
+        <head>CLAROS: (some of the) data resources </head>
+	<list>
+          <item>University of Oxford – Beazley Archive of pottery and gems</item>
+	  <item>University of Oxford - Lexicon of Greek Personal Names</item>
+	  <item>University of Cologne – Research Sculpture Archive</item>
+	  <item>German Archaeological Institute - photographs</item>
+	  <item>University of Paris X - Lexicon Iconographicum Mythologiae Classicae:</item>
+	  <item>University of Grenoble - Lexicon Iconographicum Mythologiae Classicae:</item>
+	  <item>Ashmolean Museum - Jameel Collection</item>
+	  <item>British School at Rome - antiquarian photographs and prints</item>
+	  <item>Cycladic Museum, Athens</item>
+	</list>
+      </div>
+
+        <div>
+          <head>Some disparate technologies and schemas</head>
+          <list type="gloss">
+            <label>Beazley Archive</label>
+            <item> ‘XDB’ – XML data, SQL Server Database, ASP front end.</item>
+            <label>Cologne Research Archive and German Archaeological Institute</label>
+            <item> ‘Arachne’  - MySQL database, PHP front end.</item>
+            <label>LIMC</label>
+            <item> MySQL database, PHP front end.</item>
+            <label>LGPN</label>
+            <item> Ingres relational database, also available as an
+	    XML database serving TEI XML data</item>
+          </list>
+        </div>
+
+	<div>
+          <head>Implementation of CLAROS data web approach</head>
+          <list>
+            <item><hi>No changes</hi> to the databases of the individual sources</item>
+            <item><hi>Semantic differences</hi> between data sources
+	    are resolved by mapping <hi>selected</hi> metadata from each source
+	    to CIDOC-CRM</item>
+            <item><hi>Syntactic differences</hi> between data sources are
+	    resolved by converting the selected metadata to RDF</item>
+          </list>
+          <p>CLAROS is simply a resource discovery service — the user is ultimately directed back to
+	    the original data publisher's site for full information
+	    about an event, object, place or person of interest.</p>
+        </div>
+
+      <div>
+        <head>What is RDF?</head>
+	<p>RDF is a simple model of asserting a named relationship
+	between two objects. The trick is defining the object types
+	and the relationships.</p>
+	<table>
+	  <row><cell>A</cell><cell>is of type </cell><cell>Person</cell></row>
+	  <row><cell>B</cell><cell>is of type </cell><cell>Person</cell></row>
+	  <row><cell>N</cell><cell>is of type </cell><cell>Year</cell></row>
+	  <row><cell>X</cell><cell>is of type </cell><cell>Book</cell></row>
+	  <row><cell>A</cell><cell>is married to</cell><cell>B</cell></row>
+	  <row><cell>B</cell><cell>was born in</cell><cell>N</cell></row>
+	  <row><cell>B</cell><cell>wrote</cell><cell>X</cell></row>
+	</table>
+	<p>There are specialized databases and retrieval languages to work with RDF</p>
+      </div>
+
+      <div>
+        <head>What is CIDOC?</head>
+        <p>The CIDOC Conceptual Reference Model (CRM) provides
+	   definitions and a formal structure for describing the
+	   implicit and explicit concepts and relationships used in
+	   cultural heritage documentation.</p>
+        <p>Key elements:
+	   <list>
+	     <item>Actors (people)</item>
+	     <item>Conceptual objects</item>
+	     <item>Physical things</item>
+	     <item>Events</item>
+	     <item>Time spans</item>
+	     <item>Places</item>
+	   </list>
+	   and relationships between them, e.g.:
+	   <list>
+	     <item>participate in</item>
+	     <item>refer to</item>
+	     <item>have location</item>
+	     <item>within</item>
+	   </list>
+	   </p>
+      </div>
+
+
+	<div>
+	  <head>Details of a typical subset of CIDOC</head>
+	  <p><graphic url="Images/location_2.jpg" width="105%"/></p>
+	  <p>(from <ptr target="http://cidoc.ics.forth.gr/cidoc_graphical_representation_v_5_1"/>)</p>
+	</div>
+
+        
+      <div>
+        <head>CLAROS: getting the data</head>
+	<p>For each contributor:
+	<list type="ordered">
+	  <item>make sure every object has a unique URI</item>
+	  <item>decide which data categories are licensed for open access</item>
+	  <item>map local schema to CRM</item>
+	  <item>write database export/data mangler from local form to RDF/XML</item>
+	  <item>mangle RDF/XML to 
+	  <list type="ordered">
+	    <item>link place names where possible to CLAROS gazetteer
+	    and thence to Pleiades and Geonames</item>
+	    <item>add consistent typology</item>
+	  </list>
+	  </item>
+	</list>
+	</p>
+      </div>
+
+
+      <div>
+	<head>Example: aerial photograph from British School at
+	Rome</head>
+	<p><graphic url="Images/rusellae-orig.png"/></p>
+      </div>
+
+      <div>
+	<head>As RDF XML (1)</head>
+	<egXML xmlns="http://www.tei-c.org/ns/Examples"
+	       rend="tiny">
+   <E22_Man-Made_Object xmlns="http://purl.org/NET/crm-owl#"
+                        rdf:about="http://id.clarosnet.org/BSR/0006317">
+      <P53_has_former_or_current_location rdf:resource="http://id.clarosnet.org/places/place/rome-bsr"/>
+      <P138_represents rdf:resource="http://id.clarosnet.org/places/place/rusellae"/>
+   </E22_Man-Made_Object>
+  <E53_Place rdf:about="http://id.clarosnet.org/places/place/rusellae">
+    <rdfs:label>[IT] Rovine di Roselle</rdfs:label>
+    <P87_is_identified_by>
+      <E48_Place_Name rdf:about="http://id.clarosnet.org/places/placename/rovine_di_roselle">
+        <rdf:value>Rovine di Roselle</rdf:value>
+      </E48_Place_Name>
+    </P87_is_identified_by>
+    <P87_is_identified_by>
+      <E47_Place_Spatial_Coordinates rdf:about="http://id.clarosnet.org/places/place/rusellae/coordinates">
+        <claros:has_geoObject>
+          <geo:Point xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
+            <geo:lat>42.83333</geo:lat>
+            <geo:long>11.16667</geo:long>
+          </geo:Point>
+        </claros:has_geoObject>
+      </E47_Place_Spatial_Coordinates>
+    </P87_is_identified_by>
+    <skos:closeMatch rdf:resource="http://pleiades.stoa.org/places/413288#this"/>
+    <skos:closeMatch rdf:resource="http://sws.geonames.org/3168944/"/>
+    <P89_falls_within rdf:resource="http://id.clarosnet.org/places/country/IT"/>
+  </E53_Place>
+	</egXML>
+      </div>
+
+      <div>
+	<head>As RDF XML (2)</head>
+	<egXML xmlns="http://www.tei-c.org/ns/Examples"
+	       rend="tiny">
+      <P108i_was_produced_by>
+         <E12_Production rdf:about="http://id.clarosnet.org/BSR/0006317/production">
+            <P14_carried_out_by>
+               <E21_Person rdf:about="http://id.clarosnet.org/BSR/person/Ward-Perkins-J.-B-(John-Bryan)-1912-1981-British-School-at-Rome">
+                  <P131_is_identified_by>
+                     <E82_Actor_Appellation rdf:about="http://id.clarosnet.org/BSR/name/Ward-Perkins-J.-B-(John-Bryan)-1912-1981-British-School-at-Rome">
+                        <rdf:value>Ward-Perkins, J. B (John Bryan) 1912-1981 British School at Rome</rdf:value>
+                     </E82_Actor_Appellation>
+                  </P131_is_identified_by>
+               </E21_Person>
+            </P14_carried_out_by>
+            <P4_has_time-span>
+               <E52_Time_Span>
+                  <P82_at_some_time_within>
+                     <claros:Period>
+                        <claros:period_begin rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1954</claros:period_begin>
+                        <claros:period_end rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1968</claros:period_end>
+                     </claros:Period>
+                  </P82_at_some_time_within>
+               </E52_Time_Span>
+            </P4_has_time-span>
+         </E12_Production>
+      </P108i_was_produced_by>
+	</egXML>
+      </div>
+
+      <div>
+	<head>Viewed in CLAROS</head>
+	<p><graphic url="Images/rusellae-data.png"/></p>
+      </div>
+     
+      <div>
+        <head>What is the point of all this?</head>
+        <list>
+	  <item>Standardized schema to allow interoperability</item>
+	  <item>Permanent identifiers, accessible via the web</item>
+	  <item>Linking to other peoples data</item>
+	  <item>Access to toolkits (eg <ptr
+	  target="http://www.researchspace.org/"/> from the British Museum)</item>
+        </list>
+      </div>
+
+      <div>
+	<head>ResearchSpace</head>
+	<p><graphic url="Images/researchspace.png"/></p>
+      </div>
+
+      <div>
+	  <head>The semantic web mantra: 5 star data</head>
+	  <table>
+	    <row><cell align="right"><hi><code>★</code></hi></cell><cell>Available on the web (whatever format), but with an open licence<lb/></cell></row>
+	    <row><cell align="right"><hi><code>★★</code></hi></cell><cell>Available as machine-readable structured data (e.g. Excel instead of image scan of a table)<lb/></cell></row>
+	    <row><cell align="right"><hi><code>★★★</code></hi></cell><cell>As (2) plus non-proprietary format (e.g. CSV instead of Excel)<lb/></cell></row>
+	    <row><cell align="right"><hi><code>★★★★</code></hi></cell><cell>All the above, plus: Use open standards from W3C (RDF and SPARQL) to identify things, so that people can point at your stuff<lb/></cell></row>
+	    <row><cell align="right"><hi><code>★★★★★</code></hi></cell><cell>All the above, plus: Link your data to other people’s data to provide context</cell></row>
+	    <row><cell>
+	    </cell>
+	    </row>
+	  </table>
+	  <p><ptr target="http://www.w3.org/DesignIssues/LinkedData.html"/></p>
+	</div>
+
+    </body>
+  </text>
+</TEI>

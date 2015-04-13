@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:claros="http://purl.org/NET/Claros/vocab#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>An Indian Culture Heritage Data Web?</title>
+        <author>Sebastian Rahtz and Dominic Oldman</author>
+      </titleStmt>
+      <editionStmt>
+        <edition>
+          <date>Workshop on Digital Cultural Heritage, April 8th,
+	  2015. Center for Art and Archaeology of American Institute
+	  of Indian Studies in collaboration with Oxford University.</date>
+        </edition>
+      </editionStmt>
+      <publicationStmt>
+        <publisher>University of Oxford</publisher>
+        <availability>
+          <p>Freely available for use and derivative works under a Creative Commons Attribution
+            license.</p>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <p>earlier talks</p>
+      </sourceDesc>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div>
+        <head>What next?</head>
+	<p>We have explored 
+	<list>
+	  <item>shared concerns about cultural heritage</item>
+	  <item>concepts of the semantic web</item>
+	  <item>the CIDOC cultural reference model</item>
+	  <item>projects in the UK using the CRM</item>
+	</list>
+	</p>
+      </div>
+
+      <div>
+	<head>Why a semantic web doesn't cut you off</head>
+	<p><graphic url="images/choices.png"/></p>
+      </div>
+      
+      <div>
+	<head>Let's imagine ...</head>
+	<p>... we want to build a semantic shared web resource about 
+	historical architecture, based on antiquarian photographs.
+	What do we need? At least:
+	<list>
+	  <item>records, photographs etc of building instances, eg
+	  from India <emph>(VMIS has this, and collections like that
+	  of the British Library)</emph></item>
+	  <item>a conceptual model capable of representing our
+	  knowledge of  buildings <emph>(this is what the CRM is for)</emph></item>
+	  <item>a database system we can put data into <emph>(many RDF databases)</emph></item>
+	  <item>an interface to query it <emph>(ResearchSpace is a possibility)</emph></item>
+	</list>
+	</p>
+      </div>
+      <div>
+	<head>But let's also consider that we need</head>
+	<list>
+	  <item>an agreed gazetteer of places, geo-located so that we can
+	  draw maps <emph>(does VMIS have this?)</emph></item>
+	  <item>a prosopography of people (rulers, architects,
+	  sculptors, etc) who were involved in creating the
+	  buildings</item>
+	  <item>a catalogue of people involved in the records</item>
+	  <item>an agreed set of calendars and period dating</item>
+	</list>
+	<p>alternatively, think of these as what we will have built
+	when we have finished!</p>
+      </div>
+
+      <div>
+	<head>... and the social constructs</head>
+	<list>
+	  <item>an agreement about licensing of data and images</item>
+	  <item>a model for how to extend the data with  annotations</item>
+	  <item>a model for how to capture information from the public  (crowd-sourcing)</item>
+	  <item>a workflow for judging contributions and quality</item>
+	</list>
+      </div>
+
+      <div>
+	<head>A typical artefact</head>
+	<p><graphic url="images/092031.png"/></p>
+      </div>
+
+      <div>
+	<head>One representation of the metadata</head>
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" rend="tiny">
+   <record>
+      <ACC_NO>92031</ACC_NO>
+      <PA-ACC_NO/>
+      <NEG_NO>755.6</NEG_NO>
+      <PHOTO_SOURCE>American Institute of Indian Studies</PHOTO_SOURCE>
+      <PHOTO_DATE>Nov. - Dec. 1990</PHOTO_DATE>
+      <GEN_CATEG>Architecture</GEN_CATEG>
+      <COUNTRY>India</COUNTRY>
+      <STATE>Uttar Pradesh</STATE>
+      <DISTRICT_TALUK>Agra</DISTRICT_TALUK>
+      <SITE_SUB-SITE_2ND_NAME>Agra</SITE_SUB-SITE_2ND_NAME>
+      <MONUMENT_2ND_NAME>Akbari Mahal</MONUMENT_2ND_NAME>
+      <COMPLEX>Agra Fort</COMPLEX>
+      <MON_TYPE>palace</MON_TYPE>
+      <STYLE>Mughal</STYLE>
+      <PERIOD>Mughal</PERIOD>
+      <PATRON/>
+      <CE_DATE_INSC_DATE>ca 1571 CE</CE_DATE_INSC_DATE>
+      <MATERIALS>Sandstone</MATERIALS>
+      <DIMENSIONS/>
+      <PROTECTED/>
+      <EXTERIOR___INTERIOR>Exterior</EXTERIOR___INTERIOR>
+      <DIRECTION/>
+      <SUBJECT_LABEL>General view of the ruined structure</SUBJECT_LABEL>
+      <SubjectSearchKeyword>Akbari mahal</SubjectSearchKeyword>
+      <SubjectSearchRelatedKeyword>Akbar's palace, Akbar palace</SubjectSearchRelatedKeyword>
+      <GEOCOORDINATES>27° 5′ 0″ N, 77° 58′ 0″ E</GEOCOORDINATES>
+      <NEARBY_BUS_STAND>Agra</NEARBY_BUS_STAND>
+      <NEARBY_RAILWAY_STATION>Agra </NEARBY_RAILWAY_STATION>
+      <NEAREST_AIRPORT>New Delhi</NEAREST_AIRPORT>
+   </record>
+	  </egXML>
+      </div>
+
+      <div>
+	<head>A conceptual model</head>
+	<p><graphic url="agra.pdf"/></p>
+      </div>
+
+        <div>
+          <head>CLAROS: how we got the data ready</head>
+          <p>For each contributor:
+	<list type="ordered"><item>make sure every object has a unique, open, URI</item><item>decide which data categories are licensed for open access</item><item>map local schema to CRM</item><item>write database export/data wrangler from local form to
+	  RDF/XML</item></list>
+	then we <list><item>mangle RDF/XML to 
+	  <list type="ordered"><item>link place names where possible to CLAROS gazetteer
+	    and thence to Pleiades and Geonames (cf Pelagios)</item><item>add consistent typology</item></list>
+	  </item></list>
+	</p>
+        </div>
+        <div>
+          <head>Examples of practicalties</head>
+          <list>
+            <item>Lexicon of Greek Personal Names delivered entirely by
+	 transformation of TEI XML to RDF</item>
+            <item>Beazley Archive generated RDF by ASP scripts run on SQL
+	 database</item>
+            <item>Creswell archive emailed an XML dump from MuseumPlus
+	 which we mangled using XSLT</item>
+          </list>
+          <p>most of the problems arise from mapping local schema to CRM,
+       or licensing, or unstructured data, or issues of quality, or
+       concerns over uncertainty. Actually making RDF is
+       generally easy.</p>
+        </div>
+        <div>
+          <head>Summary of data</head>
+          <table>
+            <row>
+              <cell>Arachne</cell>
+              <cell>185119 objects</cell>
+            </row>
+            <row>
+              <cell>Jameel Collection, Ashmolean</cell>
+              <cell>2316 objects</cell>
+            </row>
+            <row>
+              <cell>Beazley Archive</cell>
+              <cell>130960 objects</cell>
+            </row>
+            <row>
+              <cell>British School at Rome, photographs and plans</cell>
+              <cell>16043 objects</cell>
+            </row>
+            <row>
+              <cell>Creswell Photographic Archive, Ashmolean</cell>
+              <cell>6521 objects</cell>
+            </row>
+            <row>
+              <cell>Cycladic Museum, Athens</cell>
+              <cell>348 objects</cell>
+            </row>
+            <row>
+              <cell>Lexicon of Greek Personal Names</cell>
+              <cell>251821 people</cell>
+            </row>
+            <row>
+              <cell>LIMC Paris </cell>
+              <cell>4724 objects</cell>
+            </row>
+            <row>
+              <cell>LIMC Basel</cell>
+              <cell>55852 objects</cell>
+            </row>
+            <row>
+              <cell>Gazetteer</cell>
+              <cell> 9396 places (6325 geolocated)</cell>
+            </row>
+            <row>
+              <cell>World of Ancient Art </cell>
+              <cell>406 places</cell>
+            </row>
+          </table>
+        </div>
+
+	<div>
+        <head>Just a reminder: Resource Description Framework (RDF)</head>
+        <list>
+          <item>1 to ∞ statements of the form <q>X has a
+	  relationship Y to Z</q> (subject, predicate, object)</item>
+          <item>Uses URIs to identify subject and object</item>
+          <item>The trick is to use standardized predicates</item>
+          <item>Various formats, including XML serialization</item>
+          <item>Special language (SPARQL) for querying collections of
+	  statements efficiently in RDF databases</item>
+        </list>
+        <p>So: <code>http://collection.britishmuseum.org/id/person-institution/9240</code>
+	  <hi>has the relationship</hi> <code>dc:publisher</code> <hi>to</hi> <code>http://collection.britishmuseum.org/</code></p>
+      </div>
+
+        <div>
+          <head>Example: aerial photograph from British School at
+	Rome</head>
+          <p>
+            <graphic url="Images/rusellae-orig.png"/>
+          </p>
+        </div>
+        <div>
+          <head>As RDF XML (1)</head>
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" rend="tiny">
+            <E22_Man-Made_Object xmlns="http://purl.org/NET/crm-owl#" rdf:about="http://id.clarosnet.org/BSR/0006317">
+              <P53_has_former_or_current_location rdf:resource="http://id.clarosnet.org/places/place/rome-bsr"/>
+              <P138_represents rdf:resource="http://id.clarosnet.org/places/place/rusellae"/>
+            </E22_Man-Made_Object>
+            <E53_Place rdf:about="http://id.clarosnet.org/places/place/rusellae">
+              <rdfs:label>[IT] Rovine di Roselle</rdfs:label>
+              <P87_is_identified_by>
+                <E48_Place_Name rdf:about="http://id.clarosnet.org/places/placename/rovine_di_roselle">
+                  <rdf:value>Rovine di Roselle</rdf:value>
+                </E48_Place_Name>
+              </P87_is_identified_by>
+              <P87_is_identified_by>
+                <E47_Place_Spatial_Coordinates rdf:about="http://id.clarosnet.org/places/place/rusellae/coordinates">
+                  <claros:has_geoObject>
+                    <geo:Point xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
+                      <geo:lat>42.83333</geo:lat>
+                      <geo:long>11.16667</geo:long>
+                    </geo:Point>
+                  </claros:has_geoObject>
+                </E47_Place_Spatial_Coordinates>
+              </P87_is_identified_by>
+              <skos:closeMatch rdf:resource="http://pleiades.stoa.org/places/413288#this"/>
+              <skos:closeMatch rdf:resource="http://sws.geonames.org/3168944/"/>
+              <P89_falls_within rdf:resource="http://id.clarosnet.org/places/country/IT"/>
+            </E53_Place>
+          </egXML>
+        </div>
+        <div>
+          <head>As RDF XML (2)</head>
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" rend="tiny">
+            <P108i_was_produced_by>
+              <E12_Production rdf:about="http://id.clarosnet.org/BSR/0006317/production">
+                <P14_carried_out_by>
+                  <E21_Person rdf:about="http://id.clarosnet.org/BSR/person/Ward-Perkins-J.-B-(John-Bryan)-1912-1981-British-School-at-Rome">
+                    <P131_is_identified_by>
+                      <E82_Actor_Appellation rdf:about="http://id.clarosnet.org/BSR/name/Ward-Perkins-J.-B-(John-Bryan)-1912-1981-British-School-at-Rome">
+                        <rdf:value>Ward-Perkins, J. B (John Bryan) 1912-1981 British School at Rome</rdf:value>
+                      </E82_Actor_Appellation>
+                    </P131_is_identified_by>
+                  </E21_Person>
+                </P14_carried_out_by>
+                <P4_has_time-span>
+                  <E52_Time_Span>
+                    <P82_at_some_time_within>
+                      <claros:Period>
+                        <claros:period_begin rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1954</claros:period_begin>
+                        <claros:period_end rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1968</claros:period_end>
+                      </claros:Period>
+                    </P82_at_some_time_within>
+                  </E52_Time_Span>
+                </P4_has_time-span>
+              </E12_Production>
+            </P108i_was_produced_by>
+          </egXML>
+        </div>
+
+        <div>
+          <head>Example: a Greek </head>
+          <quote> An inscription published in <hi>Inscriptiones Graecae</hi> volume XI (4), p. 1256
+          documents a man called <hi>Παράμονος</hi>, attested at <hi>Delos</hi> in the <hi>3rd or
+            2nd century</hi> BC. He is noted as being the father of someone called
+            <hi>Δημήτριος</hi>. </quote>
+        </div>
+        <div>
+          <head>The Greek in data source</head>
+          <p>Relational DB: 
+<eg> id | name | floruit | sex | status | settlement
+----------+-----------+------------+-----+----------+----------------- 
+V1-43005 | Παράμονος | hell.-imp.| 1 | | Mytilene 
+V1-76555 | Παράμονος | ii-i BC   | 1 | | Eretria Vathia 
+V1-76557 | Παράμονος | c.100BC   | 1 | | Histiaia-Oreos 
+V1-78877 | Παράμονος | iv/iii BC | 1 | | Eretria 
+V1-85238 | Παράμονος | iii/ii BC | 1 | | </eg></p>
+</div>
+
+<div>
+          <head>CRM structure for a person like this</head>
+          <p>
+            <graphic url="Images/crm_model.png"/>
+          </p>
+        </div>
+        <div>
+          <head>The Greek expressed in RDF XML</head>
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" rend="tiny">
+            <E21.Person xmlns="http://purl.org/NET/crm-owl#" rdf:about="http://clas-lgpn2.classics.ox.ac.uk/id/V1-85238">
+              <P131.is_identified_by xml:lang="el-grc">
+                <E82.Actor_Appellation>
+                  <rdf:value>Παράμονος</rdf:value>
+                </E82.Actor_Appellation>
+              </P131.is_identified_by>
+              <P131.is_identified_by xml:lang="el-grc-x-lgpn">
+                <E82.Actor_Appellation>
+                  <rdf:value>Paramonos</rdf:value>
+                </E82.Actor_Appellation>
+              </P131.is_identified_by>
+              <P98.was_born>
+                <E67.Birth>
+                  <P4.has_time-span>
+                    <E52.Time-Span>
+                      <P79.at_some_time_within>
+                        <claros:Period>
+                          <claros:period_begin rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">-0225</claros:period_begin>
+                          <claros:period_end rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">-0175</claros:period_end>
+                        </claros:Period>
+                      </P79.at_some_time_within>
+                    </E52.Time-Span>
+                  </P4.has_time-span>
+                  <P7.took_place_at rdf:resource="http://clas-lgpn2.classics.ox.ac.uk/placeid/LGPN_11270"/>
+                </E67.Birth>
+              </P98.was_born>
+            </E21.Person>
+          </egXML>
+        </div>
+
+	<div>
+          <head>Data translation strategy: examples</head>
+          <list type="gloss">
+            <label>SQL database</label>
+            <item>you'll need a database report</item>
+            <label>XML</label>
+            <item>you can make  an XSLT transformation</item>
+            <label>CSV files</label>
+            <item>you can make a Python/Perl/Java script</item>
+            <label>Word files</label>
+            <item>Word .docx files are   actually XML</item>
+            <label>RDF</label>
+            <item>You can write SPARQL to construct new RDF</item>
+          </list>
+	</div>
+
+	<div>
+          <head>Typical data issues in smaller data sets</head>
+          <list>
+            <item>Not yet identifying records (eg just rows in a spreadsheet)</item>
+            <item>Not online yet (long-term hosting issues)</item>
+            <item>No primary sources</item>
+            <item>Not distinguishing names from persons or places</item>
+          </list>
+	</div>
+	
+    </body>
+  </text>
+</TEI>

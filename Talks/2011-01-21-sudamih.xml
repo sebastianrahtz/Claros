@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Claros - towards a unified semantic database for the world of ancient art</title>
+        <author>Sebastian Rahtz, Information and Support Group
+	Manager, Oxford University Computing Services<lb/>[for <emph>Research databases in the humanities - where next?</emph>]</author>
+      </titleStmt>
+      <editionStmt>
+        <edition>
+          <date>Oxford, January 21st 2011</date>
+        </edition>
+      </editionStmt>
+      <publicationStmt>
+        <publisher>University of Oxford</publisher>
+        <availability>
+          <p>Freely available for use and derivative works under a Creative Commons Attribution
+            license.</p>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <p>earlier talks</p>
+      </sourceDesc>
+    </fileDesc>
+    <revisionDesc>
+      <change>
+        <date>$LastChangedDate: 2011-01-21 12:02:51 +0000 (Fri, 21 Jan 2011) $.</date>
+        <name>$LastChangedBy: rahtz $</name>
+        <note>$LastChangedRevision: 511 $</note>
+      </change>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div type="outer">
+        <head>CLAROS Vision</head>
+        <p>CLAROS (Classical Art Research Online  Services) is a collaborative initiative led by the University
+	of Oxford, working in two areas of multi-disciplinary research:
+	<list>
+	  <item>Classical antiquity </item>
+	<item>Information and Communication Technologies</item></list>
+	and with two aims:
+	<list>
+	  <item>To enhance and disseminate the highest level of
+	  scholarship to the broadest global public</item>
+	  <item>To use datasets in Classics and Classical Art to exploit
+	  the potential of ICT for public service</item></list>
+	</p>
+        <div>
+          <head>Classical art is the starting point</head>
+          <table>
+            <row>
+              <cell>
+                <graphic width="1in" url="sculpture.jpg"/>
+              </cell>
+              <cell>
+                <graphic width="1in" url="pottery.jpg"/>
+              </cell>
+              <cell>
+                <graphic width="1in" url="gems.jpg"/>
+              </cell>
+            </row>
+            <row>
+              <cell>Sculpture</cell>
+              <cell>Pottery</cell>
+              <cell>Gems</cell>
+            </row>
+          </table>
+        </div>
+        <div>
+          <head>The CLAROS programme</head>
+          <list type="ordered">
+            <item>Development of a humanities dataweb combining leading classical art history and
+	    related databases</item>
+            <item>Demonstration interfaces to explore classical art</item>
+            <item>Innovative searching based on shape analysis</item>
+            <item>Large-scale RDF database providing a testbed for performance research</item>
+            <item>Changing the approach to data discovery by development of a conversational Companion</item>
+          </list>
+        </div>
+	<div>
+	  <head>A database is not just for Christmas</head>
+	  <list type="gloss">
+	    <label>The oldest approach</label>
+	    <item>Collect data, put it on index cards, write a book. END</item>
+	    <label>The old approach</label>
+	    <item>Collect data, manipulate it using Access or Excel,
+	    write a book. END</item>
+	    <label>The newer approach</label>
+	    <item>Collect the data, put it in a MySQL database, write
+	    a web front end with search boxes and browsing. END.</item>
+	    <label>The best approach</label>
+	    <item>Collect data, share it with others, look at their
+	    data, write a book, leave the data available for the next
+	    generation. <hi>NO END</hi></item>
+	  </list>
+	</div>
+
+	<div>
+	  <head>Key technologies and choices</head>
+	  <list>
+	    <item>Our target is to produce <hi>linked open data</hi></item>
+	    <item>Web sites are exemplars not sole gateways</item>
+	    <item>We follow the semantic approach of RDF and a public ontology</item>
+	  </list>
+	  <p>We aim at <hi>standardization</hi> to assist
+	  <hi>long-term preservation</hi> and <hi>extensibility</hi>.</p>
+	</div>
+
+	<div>
+	  <head>The semantic web mantra, 5 star data</head>
+	  <table>
+	    <row><cell align="right"><hi><code>★</code></hi></cell><cell>Available on the web (whatever format), but with an open licence<lb/></cell></row>
+	    <row><cell align="right"><hi><code>★★</code></hi></cell><cell>Available as machine-readable structured data (e.g. Excel instead of image scan of a table)<lb/></cell></row>
+	    <row><cell align="right"><hi><code>★★★</code></hi></cell><cell>As (2) plus non-proprietary format (e.g. CSV instead of Excel)<lb/></cell></row>
+	    <row><cell align="right"><hi><code>★★★★</code></hi></cell><cell>All the above, plus: Use open standards from W3C (RDF and SPARQL) to identify things, so that people can point at your stuff<lb/></cell></row>
+	    <row><cell align="right"><hi><code>★★★★★</code></hi></cell><cell>All the above, plus: Link your data to other people’s data to provide context</cell></row>
+	    <row><cell>
+	    </cell>
+	    </row>
+	  </table>
+	  <p><ptr target="http://www.w3.org/DesignIssues/LinkedData.html"/></p>
+	</div>
+
+      </div>
+      <div type="outer">
+        <head>CLAROS: data resources </head>
+        <p>Target: <list><item>data web integrating access to
+	scholarly information on classical art</item><item>semantic integration of the distributed, heterogeneous
+	  and non-interoperable digital resources held by CLAROS
+	  partners</item></list></p>
+        <p>
+          <hi>University of Oxford – Beazley Archive:</hi>
+          <list>
+            <item>Electronic documentation started 1979</item>
+            <item>150,000 Pottery records and 130,000 images</item>
+            <item>50,000 Engraved gem and cameo records and 30,000 images</item>
+            <item>900 Plaster casts records (classical sculpture) and 1000 images</item>
+            <item>900 Antiquarian photographs</item>
+          </list>
+        </p>
+        <p>
+          <hi>University of Oxford - Lexicon of Greek Personal Names:</hi>
+          <list>
+            <item>Electronic documentation started 1975.</item>
+            <item>400,000 recorded individuals. Over 35,000 unique  personal names.</item>
+          </list>
+        </p>
+        <div>
+          <head>CLAROS: data resources (2)</head>
+          <p>
+            <hi>University of Cologne – Research Sculpture Archive:</hi>
+            <list>
+              <item>Electronic documentation started 1972</item>
+              <item>250,000 Sculpture records, 490,000 images.</item>
+            </list>
+          </p>
+          <p>
+            <hi>German Archaeological Institute:</hi>
+            <list>
+              <item>1,500,000 photographs</item>
+            </list>
+          </p>
+          <p>
+            <hi>University of Paris X - Lexicon Iconographicum Mythologiae Classicae:</hi>
+            <list>
+              <item>Created 1972.</item>
+              <item>100,000 records, 180,000 images of mythological and religious iconography from 2,000 museums and collections.</item>
+            </list>
+          </p>
+          <p>A total of 2 million records and images</p>
+        </div>
+        <div>
+          <head>Disparate technologies</head>
+          <list type="gloss">
+            <label>Beazley Archive</label>
+            <item> ‘XDB’ – XML data, SQL Server Database, ASP front end.</item>
+            <label>Cologne Research Archive and German Archaeological Institute</label>
+            <item> ‘Arachne’  - MySQL database, PHP front end.</item>
+            <label>LIMC</label>
+            <item> MySQL database, PHP front end.</item>
+            <label>LGPN</label>
+            <item> Ingres relational database, also available as an
+	    XML database serving TEI XML data</item>
+          </list>
+        </div>
+
+	
+	<div>
+          <head>Implementation of CLAROS data web approach</head>
+          <list>
+            <item><hi>No changes</hi> to the databases of the individual sources</item>
+            <item><hi>Semantic differences</hi> between data sources
+	    are resolved by mapping selected metadata from each source
+	    to CIDOC-CRM</item>
+            <item><hi>Syntactic differences</hi> between data sources are
+	    resolved by converting the selected metadata to RDF,
+	    accessed from a single triple store using SPARQL</item>
+            <item><hi>The co-reference problem</hi>, where the 
+	    same entity is known by different names in different databases,
+	    is solved by creating a co-reference service to disambiguate synonyms</item>
+          </list>
+          <p>CLAROS is simply a resource discovery service using
+	    minimal metadata — the user is ultimately directed back to
+	    the original data publisher's site for full information
+	    about an event, object, place or person of interest.</p>
+        </div>
+
+        <div>
+          <head>System Components</head>
+          <p>
+            <graphic height="85%" url="systemcomponents.png"/>
+          </p>
+        </div>
+        
+      <div>
+        <head>What is CIDOC?</head>
+        <p>The CIDOC Conceptual Reference Model (CRM) provides
+	   definitions and a formal structure for describing the
+	   implicit and explicit concepts and relationships used in
+	   cultural heritage documentation.</p>
+        <p>Key elements:
+	   <list>
+	     <item>Actors (people)</item>
+	     <item>Conceptual objects</item>
+	     <item>Physical things</item>
+	     <item>Events</item>
+	     <item>Time spans</item>
+	     <item>Places</item>
+	   </list>
+	   and relationships between them, e.g.:
+	   <list>
+	     <item>participate in</item>
+	     <item>refer to</item>
+	     <item>have location</item>
+	     <item>within</item>
+	   </list>
+	   </p>
+      </div>
+
+        <div>
+          <head>CIDOC CRM components</head>
+          <table rend="small">
+            <row>
+              <cell>
+                <list>
+                  <item>Acquisition Information</item>
+                  <item>Appellation Information</item>
+                  <item>Attribute Assignement</item>
+                  <item>Changing Thing</item>
+                  <item>Collection Information</item>
+                  <item>Condition Information</item>
+                  <item>Deaccession and Disposal Information</item>
+                  <item>Description Information</item>
+                  <item>Documentation and References</item>
+                  <item>Existence Information</item>
+                  <item>Group Dynamics</item>
+                  <item>Image Information</item>
+                  <item>Institution Information</item>
+                  <item>Location Information</item>
+                  <item>Mark and Inscription Information</item>
+                  <item>Material and Technique Information</item>
+                  <item>Measurement Information</item>
+                </list>
+              </cell>
+              <cell>
+                <list>
+                  <item>Object Association Information</item>
+                  <item>Object Collection Information</item>
+                  <item>Object Entry Information</item>
+                  <item>Object Name and Classification Information</item>
+                  <item>Object Number Information</item>
+                  <item>Object Production Information</item>
+                  <item>Object Title Information</item>
+                  <item>Part and Component Information</item>
+                  <item>Person Nationality Information</item>
+                  <item>Planned Activities (design</item>
+                  <item>Recorder Information</item>
+                  <item>Reference Information</item>
+                  <item>Reproduction Rights Information</item>
+                  <item>Spatial - Temporal Relationship</item>
+                  <item>Subject Depicted Information</item>
+                  <item>Taxonomic Discourse</item>
+                  <item>Time-Span Information</item>
+                </list>
+              </cell>
+            </row>
+          </table>
+        </div>
+
+	<div>
+	  <head>Details of a typical subset of CIDOC</head>
+	  <p><graphic url="location_2.jpg" width="105%"/></p>
+	  <p>(from <ptr target="http://cidoc.ics.forth.gr/cidoc_graphical_representation_v_5_1"/>)</p>
+	</div>
+
+        <div>
+          <head>CLAROS and CIDOC CRM</head>
+          <p>We have found CIDOC CRM to be well suited for CLAROS data</p>
+          <list>
+            <item>There is an OWL implementation of CIDOC CRM by Erlangen University</item>
+            <item>We focused initially on the CIDOC CRM Core terms, and employed additional terms as necessary</item>
+            <item>CIDOC CRM Core can describe the complex provenance of artefacts and
+	      their relationships with key events, people, places and times</item>
+            <item>The necessary complexity of the resulting RDF/XML
+	      is mostly invisible to developers, and entirely hidden
+	      from users </item>
+            <item>The CIDOC CRM "E55.Type" system is particularly
+	      useful to permit faceted/drill-down queries,
+	      e.g. restricting results by the shape of a pot
+	      </item>
+	    <item>The CIDOC choices are documented at 
+	    <ptr target="http://www.clarosnet.org/wiki/index.php"/></item>
+          </list>
+        </div>
+
+        <div>
+          <head>Example: a Greek </head>
+	  <quote>
+	    An inscription published in <hi>Inscriptiones Graecae</hi> volume XI (4),
+	    p. 1256 documents a man called 
+	    <hi>Παράμονος</hi>, attested at <hi>Delos</hi> in the <hi>3rd or 2nd century</hi>
+	    BC. He is noted as being the father of someone called
+	    <hi>Δημήτριος</hi>.
+	  </quote>
+	</div>
+
+	<div>
+	  <head>The Greek in data source</head>
+	  <p>Relational DB:
+<eg>
+    id    |   name    |  floruit   | sex |  status  |   settlement    
+----------+-----------+------------+-----+----------+-----------------
+ V1-43005 | Παράμονος | hell.-imp. |   1 |          | Mytilene
+ V1-47408 | Παράμονος | m.iii BC   |   1 | paroikos | 
+ V1-76555 | Παράμονος | ii-i BC    |   1 |          | Eretria Vathia
+ V1-76557 | Παράμονος | c.100BC    |   1 |          | Histiaia-Oreos
+ V1-78877 | Παράμονος | iv/iii BC  |   1 |          | Eretria
+ V1-85238 | Παράμονος | iii/ii BC  |   1 |          | 
+</eg>
+or XML:
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" rend="tiny">
+            <person xmlns="http://www.tei-c.org/ns/1.0" n="1-7" xml:id="V1-85238">
+              <sex value="1"/>
+              <persName type="main" nymRef="#nPara1monos">Παράμονος</persName>
+              <birth notAfter="-0175" notBefore="-0225">
+                <placeName key="LGPN_11270" evidence="attested">Delos</placeName>
+              </birth>
+              <floruit>iii/ii BC</floruit>
+              <state key="#relationship">
+                <label>f. <persName type="relationship" xml:lang="el-grc" nymRef="#nDhmh1trios">Δημήτριος</persName></label>
+              </state>
+              <bibl><title>IG</title> XI (4) 1256</bibl>
+            </person>
+          </egXML>
+	  </p>
+        </div>
+        <div>
+          <head>A CIDOC structure for a person like this</head>
+          <p>
+            <graphic url="crm_model.png"/>
+          </p>
+        </div>
+        <div>
+          <head>The Greek expressed in RDF XML</head>
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" rend="tiny">
+            <E21.Person xmlns="http://purl.org/NET/crm-owl#" rdf:about="http://clas-lgpn2.classics.ox.ac.uk/id/V1-85238">
+              <P131.is_identified_by xml:lang="el-grc">
+                <E82.Actor_Appellation>
+                  <rdf:value>Παράμονος</rdf:value>
+                </E82.Actor_Appellation>
+              </P131.is_identified_by>
+              <P131.is_identified_by xml:lang="el-grc-x-lgpn">
+                <E82.Actor_Appellation>
+                  <rdf:value>Paramonos</rdf:value>
+                </E82.Actor_Appellation>
+              </P131.is_identified_by>
+              <P98.was_born>
+                <E67.Birth>
+                  <P4.has_time-span>
+                    <E52.Time-Span>
+                      <P79.at_some_time_within>
+                        <E61.Time_Primitive>
+                          <claros:not_before xmlns:claros="http://purl.org/NET/Claros/vocab#" rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">-0225</claros:not_before>
+                          <claros:not_after xmlns:claros="http://purl.org/NET/Claros/vocab#" rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">-0175</claros:not_after>
+                        </E61.Time_Primitive>
+                      </P79.at_some_time_within>
+                    </E52.Time-Span>
+                  </P4.has_time-span>
+                  <P7.took_place_at rdf:resource="http://clas-lgpn2.classics.ox.ac.uk/placeid/LGPN_11270"/>
+                </E67.Birth>
+              </P98.was_born>
+            </E21.Person>
+          </egXML>
+        </div>
+        <div>
+          <head>Example results — look for <q>kalos</q></head>
+          <table rend="tiny">
+            <row role="label">
+              <cell>Source</cell>
+              <cell>Type</cell>
+              <cell>
+                <emph>n</emph>
+              </cell>
+              <cell>Select</cell>
+            </row>
+            <row>
+              <cell>Arachne</cell>
+              <cell>Object</cell>
+              <cell align="right">4</cell>
+              <cell>
+                <ref target="http://claros-public.oerc.ox.ac.uk:8080/claros_demo_server/demo/keyword-results-counts-bytype-browse.html#search=kalos;source=Arachne;type=Object" onclick="newSearchSourceTypeState('kalos', 'Arachne', 'Object')">Arachne /
+		Object</ref>
+              </cell>
+            </row>
+            <row>
+              <cell>LGPN</cell>
+              <cell>Person</cell>
+              <cell align="right">2</cell>
+              <cell>
+                <ref target="http://claros-public.oerc.ox.ac.uk:8080/claros_demo_server/demo/keyword-results-counts-bytype-browse.html#search=kalos;source=LGPN;type=Person" onclick="newSearchSourceTypeState('kalos', 'LGPN', 'Person')">LGPN / Person</ref>
+              </cell>
+            </row>
+            <row>
+              <cell>Beazley</cell>
+              <cell>Object</cell>
+              <cell align="right">23</cell>
+              <cell>
+                <ref target="http://claros-public.oerc.ox.ac.uk:8080/claros_demo_server/demo/keyword-results-counts-bytype-browse.html#search=kalos;source=Beazley_pottery;type=Object" onclick="newSearchSourceTypeState('kalos', 'Beazley', 'Object')">Beazley / Object</ref>
+              </cell>
+            </row>
+          </table>
+          <table rend="tiny">
+            <row role="label">
+              <cell>Source</cell>
+              <cell>Type</cell>
+              <cell>Description</cell>
+            </row>
+            <row>
+              <cell>Arachne</cell>
+              <cell>Object</cell>
+              <cell><ref target="http://arachne.uni-koeln.de/item/objekt/143134">Schale mit
+		  kalos-Inschrift, Nike und Jüngling</ref> - Schale mit
+		  kalos-Inschrift, Nike und Jüngling
+		</cell>
+            </row>
+            <row>
+              <cell>LGPN</cell>
+              <cell>Person</cell>
+              <cell><ref target="http://clas-lgpn2.classics.ox.ac.uk/id/V2a-37410">http://clas-lgpn2.classics.ox.ac.uk/id/V2a-37410</ref>
+		  - Kalos
+		</cell>
+            </row>
+            <row>
+              <cell>Arachne</cell>
+              <cell>Object</cell>
+              <cell><ref target="http://arachne.uni-koeln.de/item/objekt/136039">Pinax
+		  mit kalos-Inschrift</ref> - Pinax mit kalos-Inschrift
+		</cell>
+            </row>
+            <row>
+              <cell>Arachne</cell>
+              <cell>Object</cell>
+              <cell><ref target="http://arachne.uni-koeln.de/item/objekt/95407">Stele
+		  der Psyche, Frau des Kalos</ref> - Stele der Psyche, Frau des
+		  Kalos
+		</cell>
+            </row>
+            <row>
+              <cell>Arachne</cell>
+              <cell>Object</cell>
+              <cell><ref target="http://arachne.uni-koeln.de/item/objekt/143135">fragmentierte
+		  Schale mit kalos-Inschrift, zwei Jünglinge</ref> - fragmentierte
+		  Schale mit kalos-Inschrift, zwei Jünglinge
+		</cell>
+            </row>
+            <row>
+              <cell>Beazley</cell>
+              <cell>Object</cell>
+              <cell><ref target="http://www.beazley.ox.ac.uk/record/7E21D712-5717-4C7E-B825-5A4082E33A49">
+		    138, Berlin, Antikensammlung, 3228</ref> - Marcade, J., Eros Kalos
+		    (Geneva, 1962): 116-17
+		</cell>
+            </row>
+            <row>
+              <cell>Beazley</cell>
+              <cell>Object</cell>
+              <cell><ref target="http://www.beazley.ox.ac.uk/record/1D42FC54-878F-43B1-AE62-CD3F98352FCE">
+		    402, Athens, National Museum, XXXX402</ref> - Marcade, J., Eros Kalos
+		    (Geneva, 1962): 137
+		</cell>
+            </row>
+            <row>
+              <cell>Beazley</cell>
+              <cell>Object</cell>
+              <cell><ref target="http://www.beazley.ox.ac.uk/record/EA209DDD-2FFE-42BE-8151-A85128D88A76">
+		    8907, Paris, Musee du Louvre, XXXX8907</ref> - Marcade, J., Eros
+		    Kalos (Geneva, 1962): 146-47
+		</cell>
+            </row>
+            <row>
+              <cell>Beazley</cell>
+              <cell>Object</cell>
+              <cell><ref target="http://www.beazley.ox.ac.uk/record/2E5370B3-B81B-4C49-A498-ABB8DF4C0279">
+		    200618, Paris, Cabinet des Medailles, 509</ref> - Marcade, J., Eros
+		    Kalos (Geneva, 1962): 111
+		</cell>
+            </row>
+          </table>
+        </div>
+
+      
+
+      </div>
+      <div type="outer">
+	<head>The CLAROS interface </head>
+	<list>
+	  <item>Each partner can integrate CLAROS data from the other partners using their own programming platform.</item>
+	  <item>As an example the Beazley Archive set up a <emph>CLAROS Explorer</emph> to show what is possible.</item>
+	</list>
+	<p>
+	  <graphic width="80%" url="explorer.jpg"/>
+	</p>
+	<div>
+	  <head>CLAROS faceted browser</head>
+	  <p>
+	    <graphic height="70%" url="faceted.png"/>
+	  </p>
+	</div>
+	<div>
+	  <head>Image-based search</head>
+	  <p>
+	    <graphic height="70%" url="imagesearch.png"/>
+	  </p>
+	</div>
+      </div>
+      
+      <div type="outer">
+          <head>The relevance of CLAROS</head>
+          <p>We believe that CLAROS is important because
+	  <list>
+	    <item>It is not designed to be a demonstrator, but to
+	    deliver real, complete, data</item>
+	    <item>We will be providing real research routes into the data, 
+	    used by real researchers</item>
+	    <item>We are testing an ontology, CIDOC CRM, on a proper
+	    scale</item>
+	    <item>There is a genuine collaboration between humanities,
+	    engineering and computer science</item>
+	    <item>We show the rest of humanities that the dataweb
+	    approach can work technically</item>
+	  </list>
+	</p>
+        </div>
+
+	<div>
+	  <head>Practicalities and FAQs</head>
+<list type="gloss">
+<label>Who leads this?</label><item>Professor Donna Kurtz, Beazley Archive, Oxford</item>
+<label>Who does the tech?</label><item>The distributed partners, coordinated at OERC,Oxford</item>
+<label>Is it available?</label><item>The public launch is in spring 2011</item>
+<label>How can I take this semantic web approach myself?</label><item>The  InfoDev at OUCS
+(<ptr target="http://www.oucs.ox.ac.uk/infodev/"/>) are well placed
+to advise and assist research projects in this area</item>
+</list>
+	</div>
+    </body>
+  </text>
+</TEI>

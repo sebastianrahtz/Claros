@@ -1,0 +1,1058 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:claros="http://purl.org/NET/Claros/vocab#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>CLAROS: experiences in integrating  disparate art-historical resources using a linked data approach</title>
+        <author>Sebastian Rahtz, <lb/> Director (Research) of Academic
+	IT,<lb/>Oxford University IT Services</author>
+      </titleStmt>
+      <editionStmt>
+        <edition>
+          <date>DHOXSS July 2014</date>
+        </edition>
+      </editionStmt>
+      <publicationStmt>
+        <publisher>University of Oxford</publisher>
+        <availability>
+          <p>Freely available for use and derivative works under a Creative Commons Attribution
+            license.</p>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <p>earlier talks</p>
+      </sourceDesc>
+    </fileDesc>
+    <revisionDesc>
+      <change>
+        <date>$LastChangedDate: 2013-07-04 23:05:48 +0100 (Thu, 04 Jul 2013) $.</date>
+        <name>$LastChangedBy: rahtz $</name>
+        <note>$LastChangedRevision: 12374 $</note>
+      </change>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div>
+        <head>Data: the CLAROS philosophy</head>
+        <p>Data is not just for Christmas</p>
+        <list type="gloss">
+          <label>The oldest approach</label>
+          <item>Collect data, put it on index cards, read cards, write a book. <hi>END</hi></item>
+          <label>The old approach</label>
+          <item>Collect data, manipulate it using Access or Excel,
+	    write a book, lose floppy disks. <hi>END</hi></item>
+          <label>The newer approach</label>
+          <item>Collect the data, put it in a MySQL database, write
+	    a web front end with search boxes and browsing, archive
+	    database backup files. <hi>END</hi>.</item>
+          <label>The best approach</label>
+          <item>Collect data, share it with others, look at their
+	    data, write a book, leave the data available for the next
+	    generation. <hi>NO END</hi></item>
+        </list>
+        <div>
+          <head>The CLAROS programme</head>
+          <p>CLAROS is an Oxford-based international collaboration
+	  working on:
+          <list type="ordered"><item>Development of a humanities data web combining
+	    leading classical art history and
+	    related databases</item><item>Demonstration interfaces to explore world art</item><item>Innovative searching based on shape analysis</item><item>Large-scale RDF database providing a testbed for performance research</item><item>Changing the approach to data discovery by development of a conversational Companion</item></list></p>
+        </div>
+
+      <div>
+        <head>CLAROS in the context of academic research data management</head>
+	<p>Our aim is to help our academic researchers:
+        <list>
+	  <item>publish an <hi>index</hi> to resources across a wide range of the humanities by (at least) minimal mapping to a common standard</item>
+	  <item>create a neutral <hi>data format</hi> which can be archived</item>
+	  <item>see their work and data as <hi>addressable resources</hi></item>
+	  <item>make use of off-the-shelf, easily-maintained, and powerful <hi>query systems</hi> and <hi>visualizations</hi></item>
+	  <item>put their work in the same spectrum as the rest of the cultural heritage sector</item> 
+	</list>
+	and thus meet the increasingly stringent <hi>requirements of research funders</hi>.
+	</p>
+      </div>
+
+        <div>
+          <head>Our technical aspiration: 5 star data</head>
+          <table>
+            <row>
+              <cell align="right">
+                <hi>
+                  <code>★</code>
+                </hi>
+              </cell>
+              <cell>Available on the web (whatever format), but with an open licence<lb/></cell>
+            </row>
+            <row>
+              <cell align="right">
+                <hi>
+                  <code>★★</code>
+                </hi>
+              </cell>
+              <cell>Available as machine-readable structured data (e.g. Excel instead of image scan of a table)<lb/></cell>
+            </row>
+            <row>
+              <cell align="right">
+                <hi>
+                  <code>★★★</code>
+                </hi>
+              </cell>
+              <cell>As (2) plus non-proprietary format (e.g. CSV instead of Excel)<lb/></cell>
+            </row>
+            <row>
+              <cell align="right">
+                <hi>
+                  <code>★★★★</code>
+                </hi>
+              </cell>
+              <cell><hi>All the above, plus: Use open standards from W3C (RDF and SPARQL) to identify things, so that people can point at your stuff</hi><lb/></cell>
+            </row>
+            <row>
+              <cell align="right">
+                <hi>
+                  <code>★★★★★</code>
+                </hi>
+              </cell>
+              <cell>All the above, plus: Link your data to other people’s data to provide context</cell>
+            </row>
+            <row>
+              <cell>
+	    </cell>
+            </row>
+          </table>
+          <p>
+            <ptr target="http://www.w3.org/DesignIssues/LinkedData.html"/>
+          </p>
+        </div>
+        <div>
+          <head>CLAROS web</head>
+          <p>
+            <graphic url="Images/clarosexplorer.png"/>
+          </p>
+        </div>
+        <div>
+          <head>CLAROS data web</head>
+          <p>
+            <graphic url="Images/dataclaros.png"/>
+          </p>
+        </div>
+        <div>
+          <head>CLAROS: (some of the) data resources </head>
+          <list>
+            <item>University of Oxford – Beazley Archive of pottery and
+	  gems; Lexicon of Greek Personal Names</item>
+            <item>University of Cologne – Research Sculpture Archive</item>
+            <item>German Archaeological Institute - photographs</item>
+            <item>University of Paris X - Lexicon Iconographicum Mythologiae Classicae</item>
+            <item>University of Grenoble - Lexicon Iconographicum Mythologiae Classicae</item>
+            <item>Ashmolean Museum - Jameel Islamic Collection; Creswell
+	  Photographic Collection</item>
+            <item>British School at Rome - antiquarian photographs and prints</item>
+            <item>Cycladic Museum, Athens - Cycladic art</item>
+          </list>
+          <p>The minimal entry criteria are openly-licensed data, and
+	persistent URIs for records.</p>
+        </div>
+        <div>
+          <head>CLAROS geographic coverage</head>
+          <p>
+            <graphic url="Images/clarosdataplaces.png"/>
+          </p>
+        </div>
+        <div>
+          <head>The CLAROS data web approach</head>
+          <list>
+            <item><hi>No changes</hi> to the databases of the individual sources</item>
+            <item><hi>Semantic differences</hi> between data sources
+	    are resolved by mapping <hi>selected</hi> metadata from each source
+	    to CIDOC-CRM</item>
+            <item><hi>Syntactic differences</hi> between data sources are
+	    resolved by converting the selected metadata to RDF</item>
+            <item><hi>Complete records</hi> are pulled and stored, not just annotations
+	    (cf Pelagios)</item>
+          </list>
+          <p>CLAROS is simply a <hi>cacheing resource discovery service</hi> — the user is ultimately directed back to
+	    the original data publisher's site for full information
+	    about an event, object, place or person of interest.</p>
+        </div>
+      </div>
+      <div>
+        <head>CIDOC Conceptual Reference Model  CRM</head>
+        <p>The CRM provides definitions and a formal structure for
+        describing the implicit and explicit concepts and
+        relationships used in cultural heritage documentation.
+        <list><item>Actors (people)</item><item>Conceptual
+        objects</item><item>Physical
+        things</item><item>Events</item><item>Time
+        spans</item><item>Places</item></list> and relationships
+        between them, e.g.: <list><item>participate
+        in</item><item>refer to</item><item>have
+        location</item><item>within</item></list>
+
+	</p>
+	<div>
+	  <head>The CRM concepts</head>
+<p rend="small">Modification
+Acquisition
+Activity
+Actor
+Actor_Appellation
+Address
+Appellation
+Attribute_Assignment
+Authority_Document
+Beginning_of_Existence
+Biological_Object
+Birth
+CRM_Entity
+Collection
+Conceptual_Object
+Conceptual_Object_Appellation
+Condition_Assessment
+Condition_State
+Contact_Point
+Creation
+Curation_Activity
+Date
+Death
+Design_or_Procedure
+Destruction
+Dimension
+Dissolution
+Document
+End_of_Existence
+Event
+Formation
+Group
+Identifier
+Identifier_Assignment
+Image
+Information_Carrier
+Information_Object
+Inscription
+Joining
+Language
+Leaving
+Legal_Body
+Legal_Object
+Linguistic_Object
+Man-Made_Feature
+Man-Made_Object
+Man-Made_Thing
+Mark
+Material
+Measurement
+Measurement_Unit
+Move
+Part_Addition
+Part_Removal
+Period
+Persistent_Item
+Person
+Physical_Feature
+Physical_Man-Made_Thing
+Physical_Object
+Physical_Thing
+Place
+Place_Appellation
+Place_Name
+Production
+Propositional_Object
+Right
+Section_Definition
+Site
+Spatial_Coordinates
+Symbolic_Object
+Temporal_Entity
+Thing
+Time-Span
+Time_Appellation
+Title
+Transfer_of_Custody
+Transformation
+Type
+Type_Assignment
+Type_Creation
+Visual_Item
+</p>
+</div>
+	   <div>
+	   <head>The CRM properties</head>
+<p rend="small">added
+assigned
+assigned_attribute_to
+at_some_time_within
+augmented
+bears_feature
+beginning_is_qualified_by
+borders_with
+brought_into_existence
+brought_into_life
+by_mother
+carried_out_by
+carries
+classified
+concerned
+consists_of
+continued
+created_type
+curated
+custody_received_by
+custody_surrendered_by
+deassigned
+depicts
+destroyed
+diminished
+dissolved
+documents
+employed
+end_is_qualified_by
+exemplifies
+falls_within
+finishes
+foresees_use_of
+from_father
+had_as_general_use
+had_at_least_duration
+had_at_most_duration
+had_general_purpose
+had_participant
+had_specific_purpose
+has_alternative_form
+has_broader_term
+has_component
+has_condition
+has_contact_point
+has_created
+has_current_keeper
+has_current_location
+has_current_or_former_curator
+has_current_or_former_member
+has_current_or_former_residence
+has_current_owner
+has_current_permanent_location
+has_dimension
+has_formed
+has_former_or_current_keeper
+has_former_or_current_location
+has_former_or_current_owner
+has_identified
+has_language
+has_modified
+has_note
+has_number_of_parts
+has_preferred_identifier
+has_produced
+has_section
+has_section_definition
+has_time-span
+has_title
+has_translation
+has_type
+has_unit
+has_value
+is_about
+is_associated_with
+is_composed_of
+is_equal_in_time_to
+is_identified_by
+is_separated_from
+is_subject_to
+joined
+joined_with
+lists
+measured
+meets_in_time_with
+moved
+moved_from
+moved_to
+observed_dimension
+occurred_in_the_presence_of
+occurs_before
+occurs_during
+ongoing_throughout
+overlaps_in_time_with
+overlaps_with
+possesses
+refers_to
+removed
+represents
+resulted_in
+right_held_by
+separated
+separated_from
+shows_features_of
+shows_visual_item
+starts
+took_out_of_existence
+took_place_at
+took_place_on_or_within
+transferred_custody_of
+transferred_title_from
+transferred_title_of
+transferred_title_to
+transformed
+used_constituent
+used_general_technique
+used_object_of_type
+used_specific_object
+used_specific_technique
+was_based_on
+was_death_of
+was_influenced_by
+was_intended_for
+was_intended_use_of
+was_motivated_by
+</p>
+
+	   </div>
+        <div>
+          <head>CLAROS and CIDOC CRM</head>
+          <p>We have found CIDOC CRM to be pretty well suited for CLAROS data</p>
+          <list>
+            <item>The CRM choices are documented at <ptr target="http://www.clarosnet.org/wiki/index.php"/></item>
+            <item>There is the useful OWL implementation of  CRM by Erlangen University</item>
+            <item>We focused initially on the  CRM Core terms, and employed additional terms as
+            necessary</item>
+            <item> CRM Core covers our needs for complex provenance of artefacts and their
+            relationships with key events, people, places and times. We extended a little to cover geographic
+	    coordinates, and dating.</item>
+            <item>The CIDOC CRM "E55_Type" system is useable to permit faceted/drill-down
+            queries, e.g. restricting results by the shape of a pot, but we probably abuse it.
+          </item>
+          </list>
+        </div>
+        <div>
+          <head>What is the point of all this?</head>
+          <list>
+            <item>Standardized schema to allow interoperability</item>
+            <item>Permanent identifiers, accessible via the web</item>
+            <item>Linking to other peoples data</item>
+            <item>Access to toolkits (eg <ref target="http://www.researchspace.org/">Research Space</ref></item>
+          </list>
+        </div>
+        <div>
+          <head>CLAROS: getting the data ready</head>
+          <p>For each contributor:
+	<list type="ordered"><item>make sure every object has a unique, open, URI</item><item>decide which data categories are licensed for open access</item><item>map local schema to CRM</item><item>write database export/data wrangler from local form to
+	  RDF/XML</item></list>
+	then we <list><item>mangle RDF/XML to 
+	  <list type="ordered"><item>link place names where possible to CLAROS gazetteer
+	    and thence to Pleiades and Geonames (cf Pelagios)</item><item>add consistent typology</item></list>
+	  </item></list>
+	</p>
+        </div>
+        <div>
+          <head>Examples of practicalties</head>
+          <list>
+            <item>Lexicon of Greek Personal Names delivered entirely by
+	 transformation of TEI XML to RDF</item>
+            <item>Beazley Archive generated RDF by ASP scripts run on SQL
+	 database</item>
+            <item>Creswell archive emailed an XML dump from MuseumPlus
+	 which we mangled using XSLT</item>
+          </list>
+          <p>most of the problems arise from mapping local schema to CRM,
+       or licensing, or unstructured data, or issues of quality, or
+       concerns over uncertainty. Actually making RDF is
+       generally easy.</p>
+        </div>
+        <div>
+          <head>Summary of data</head>
+          <table>
+            <row>
+              <cell>arachne</cell>
+              <cell>Arachne</cell>
+              <cell>185119 objects</cell>
+            </row>
+            <row>
+              <cell>ashmol</cell>
+              <cell>Jameel Collection, Ashmolean</cell>
+              <cell>2316 objects</cell>
+            </row>
+            <row>
+              <cell>beazley</cell>
+              <cell>Beazley Archive</cell>
+              <cell>130960 objects</cell>
+            </row>
+            <row>
+              <cell>bsa</cell>
+              <cell>British School at Athens </cell>
+              <cell>(pending)</cell>
+            </row>
+            <row>
+              <cell>bsr</cell>
+              <cell>British School at Rome, photographs and plans</cell>
+              <cell>16043 objects</cell>
+            </row>
+            <row>
+              <cell>creswell</cell>
+              <cell>Creswell Photographic Archive, Ashmolean</cell>
+              <cell>6521 objects</cell>
+            </row>
+            <row>
+              <cell>cycladic</cell>
+              <cell>Cycladic Museum, Athens</cell>
+              <cell>348 objects</cell>
+            </row>
+            <row>
+              <cell>lgpn</cell>
+              <cell>Lexicon of Greek Personal Names</cell>
+              <cell>251821 people</cell>
+            </row>
+            <row>
+              <cell>limc</cell>
+              <cell>LIMC Paris </cell>
+              <cell>4724 objects</cell>
+            </row>
+            <row>
+              <cell>limcbasel</cell>
+              <cell>LIMC Basel</cell>
+              <cell>55852 objects</cell>
+            </row>
+            <row>
+              <cell>metamorphoses</cell>
+              <cell>Gazetteer</cell>
+              <cell> 9396 places (6325 geolocated)</cell>
+            </row>
+            <row>
+              <cell>oxrep</cell>
+              <cell>Oxford Roman Economy project</cell>
+              <cell>(pending)</cell>
+            </row>
+            <row>
+              <cell>waa</cell>
+              <cell>World of Ancient Art </cell>
+              <cell>406 places</cell>
+            </row>
+          </table>
+        </div>
+        <div>
+          <head>Partner data provision</head>
+          <table>
+            <row>
+              <cell>arachne</cell>
+              <cell>Arachne</cell>
+              <cell>OAI feed</cell>
+            </row>
+            <row>
+              <cell>ashmol</cell>
+              <cell>Jameel Collection, Ashmolean</cell>
+              <cell>static file</cell>
+            </row>
+            <row>
+              <cell>beazley</cell>
+              <cell>Beazley Archive</cell>
+              <cell>REST retrieval</cell>
+            </row>
+            <row>
+              <cell>bsa</cell>
+              <cell>British School at Athens </cell>
+              <cell>(pending)</cell>
+            </row>
+            <row>
+              <cell>bsr</cell>
+              <cell>British School at Rome, photographs and plans</cell>
+              <cell>static file</cell>
+            </row>
+            <row>
+              <cell>creswell</cell>
+              <cell>Creswell Photographic Archive, Ashmolean</cell>
+              <cell>static file</cell>
+            </row>
+            <row>
+              <cell>cycladic</cell>
+              <cell>Cycladic Museum, Athens</cell>
+              <cell>static file</cell>
+            </row>
+            <row>
+              <cell>lgpn</cell>
+              <cell>Lexicon of Greek Personal Names</cell>
+              <cell>REST retrieval</cell>
+            </row>
+            <row>
+              <cell>limc</cell>
+              <cell>LIMC Paris </cell>
+              <cell>database dump, conversion to file</cell>
+            </row>
+            <row>
+              <cell>limcbasel</cell>
+              <cell>LIMC Basel</cell>
+              <cell>database dump, conversion to file</cell>
+            </row>
+            <row>
+              <cell>metamorphoses</cell>
+              <cell>Gazetteer</cell>
+              <cell>(natively managed)</cell>
+            </row>
+            <row>
+              <cell>oxrep</cell>
+              <cell>Oxford Roman Economy project</cell>
+              <cell>(pending)</cell>
+            </row>
+            <row>
+              <cell>trendall</cell>
+              <cell>Trendall Archive</cell>
+              <cell>(unclear)</cell>
+            </row>
+            <row>
+              <cell>waa</cell>
+              <cell>World of Ancient Art </cell>
+              <cell>database dump, conversion</cell>
+            </row>
+          </table>
+        </div>
+        <div>
+          <head>Example: aerial photograph from British School at
+	Rome</head>
+          <p>
+            <graphic url="Images/rusellae-orig.png"/>
+          </p>
+        </div>
+        <div>
+          <head>As RDF XML (1)</head>
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" rend="tiny">
+            <E22_Man-Made_Object xmlns="http://purl.org/NET/crm-owl#" rdf:about="http://id.clarosnet.org/BSR/0006317">
+              <P53_has_former_or_current_location rdf:resource="http://id.clarosnet.org/places/place/rome-bsr"/>
+              <P138_represents rdf:resource="http://id.clarosnet.org/places/place/rusellae"/>
+            </E22_Man-Made_Object>
+            <E53_Place rdf:about="http://id.clarosnet.org/places/place/rusellae">
+              <rdfs:label>[IT] Rovine di Roselle</rdfs:label>
+              <P87_is_identified_by>
+                <E48_Place_Name rdf:about="http://id.clarosnet.org/places/placename/rovine_di_roselle">
+                  <rdf:value>Rovine di Roselle</rdf:value>
+                </E48_Place_Name>
+              </P87_is_identified_by>
+              <P87_is_identified_by>
+                <E47_Place_Spatial_Coordinates rdf:about="http://id.clarosnet.org/places/place/rusellae/coordinates">
+                  <claros:has_geoObject>
+                    <geo:Point xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#">
+                      <geo:lat>42.83333</geo:lat>
+                      <geo:long>11.16667</geo:long>
+                    </geo:Point>
+                  </claros:has_geoObject>
+                </E47_Place_Spatial_Coordinates>
+              </P87_is_identified_by>
+              <skos:closeMatch rdf:resource="http://pleiades.stoa.org/places/413288#this"/>
+              <skos:closeMatch rdf:resource="http://sws.geonames.org/3168944/"/>
+              <P89_falls_within rdf:resource="http://id.clarosnet.org/places/country/IT"/>
+            </E53_Place>
+          </egXML>
+        </div>
+        <div>
+          <head>As RDF XML (2)</head>
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" rend="tiny">
+            <P108i_was_produced_by>
+              <E12_Production rdf:about="http://id.clarosnet.org/BSR/0006317/production">
+                <P14_carried_out_by>
+                  <E21_Person rdf:about="http://id.clarosnet.org/BSR/person/Ward-Perkins-J.-B-(John-Bryan)-1912-1981-British-School-at-Rome">
+                    <P131_is_identified_by>
+                      <E82_Actor_Appellation rdf:about="http://id.clarosnet.org/BSR/name/Ward-Perkins-J.-B-(John-Bryan)-1912-1981-British-School-at-Rome">
+                        <rdf:value>Ward-Perkins, J. B (John Bryan) 1912-1981 British School at Rome</rdf:value>
+                      </E82_Actor_Appellation>
+                    </P131_is_identified_by>
+                  </E21_Person>
+                </P14_carried_out_by>
+                <P4_has_time-span>
+                  <E52_Time_Span>
+                    <P82_at_some_time_within>
+                      <claros:Period>
+                        <claros:period_begin rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1954</claros:period_begin>
+                        <claros:period_end rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">1968</claros:period_end>
+                      </claros:Period>
+                    </P82_at_some_time_within>
+                  </E52_Time_Span>
+                </P4_has_time-span>
+              </E12_Production>
+            </P108i_was_produced_by>
+          </egXML>
+        </div>
+        <div>
+          <head>Viewed in CLAROS data explorer</head>
+          <p>
+            <graphic url="Images/rusellae-data.png"/>
+          </p>
+        </div>
+        <div>
+          <head>Example: a Greek </head>
+          <quote> An inscription published in <hi>Inscriptiones Graecae</hi> volume XI (4), p. 1256
+          documents a man called <hi>Παράμονος</hi>, attested at <hi>Delos</hi> in the <hi>3rd or
+            2nd century</hi> BC. He is noted as being the father of someone called
+            <hi>Δημήτριος</hi>. </quote>
+        </div>
+        <div>
+          <head>The Greek in data source</head>
+          <p>Relational DB: 
+<eg> id | name | floruit | sex | status | settlement
+----------+-----------+------------+-----+----------+----------------- 
+V1-43005 | Παράμονος | hell.-imp.| 1 | | Mytilene 
+V1-76555 | Παράμονος | ii-i BC   | 1 | | Eretria Vathia 
+V1-76557 | Παράμονος | c.100BC   | 1 | | Histiaia-Oreos 
+V1-78877 | Παράμονος | iv/iii BC | 1 | | Eretria 
+V1-85238 | Παράμονος | iii/ii BC | 1 | | </eg></p>
+</div>
+<div>
+<head>... or in XML</head>
+<egXML xmlns="http://www.tei-c.org/ns/Examples" rend="tiny"><person xmlns="http://www.tei-c.org/ns/1.0" n="1-7" xml:id="V1-85238"><sex value="1"/><persName type="main" nymRef="#nPara1monos">Παράμονος</persName><birth notAfter="-0175" notBefore="-0225"><placeName key="LGPN_11270" evidence="attested">Delos</placeName></birth><floruit>iii/ii BC</floruit><state key="#relationship"><label>f. <persName type="relationship" xml:lang="el-grc" nymRef="#nDhmh1trios">Δημήτριος</persName></label></state><bibl><title>IG</title> XI (4) 1256</bibl></person></egXML>
+
+        </div>
+        <div>
+          <head>CRM structure for a person like this</head>
+          <p>
+            <graphic url="Images/crm_model.png"/>
+          </p>
+        </div>
+        <div>
+          <head>The Greek expressed in RDF XML</head>
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" rend="tiny">
+            <E21.Person xmlns="http://purl.org/NET/crm-owl#" rdf:about="http://clas-lgpn2.classics.ox.ac.uk/id/V1-85238">
+              <P131.is_identified_by xml:lang="el-grc">
+                <E82.Actor_Appellation>
+                  <rdf:value>Παράμονος</rdf:value>
+                </E82.Actor_Appellation>
+              </P131.is_identified_by>
+              <P131.is_identified_by xml:lang="el-grc-x-lgpn">
+                <E82.Actor_Appellation>
+                  <rdf:value>Paramonos</rdf:value>
+                </E82.Actor_Appellation>
+              </P131.is_identified_by>
+              <P98.was_born>
+                <E67.Birth>
+                  <P4.has_time-span>
+                    <E52.Time-Span>
+                      <P79.at_some_time_within>
+                        <claros:Period>
+                          <claros:period_begin rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">-0225</claros:period_begin>
+                          <claros:period_end rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">-0175</claros:period_end>
+                        </claros:Period>
+                      </P79.at_some_time_within>
+                    </E52.Time-Span>
+                  </P4.has_time-span>
+                  <P7.took_place_at rdf:resource="http://clas-lgpn2.classics.ox.ac.uk/placeid/LGPN_11270"/>
+                </E67.Birth>
+              </P98.was_born>
+            </E21.Person>
+          </egXML>
+        </div>
+      </div>
+      <div>
+        <head>Practicalities</head>
+        <p>
+          <graphic url="Images/workflow.png"/>
+        </p>
+        <div>
+          <head>Name mapping procedure</head>
+          <list>
+            <item>Does <gi>E53_Place</gi> have a geolocation? OK</item>
+            <item>Normalize place name. Translate space to -, lower-case,
+    normalize accents, etc</item>
+            <item>Does name of place match a known place? link to that
+    place</item>
+            <item>Does name of place <emph>partially</emph> match a place?
+    create an <gi>E53_Place</gi> which has a <gi>P89_falls_within</gi>
+    linking to the half-match. Example <q>athens-kerameikos</q></item>
+            <item>Does <gi>E53_Place</gi> have a geonames link? get lat/long
+    from www.geonames.org</item>
+          </list>
+        </div>
+        <div>
+          <head>Primitive Typology</head>
+          <table>
+            <row>
+              <cell>architecture</cell>
+              <cell>Architectural Sculpture</cell>
+            </row>
+            <row>
+              <cell>bound-volume</cell>
+              <cell>Bound volume</cell>
+            </row>
+            <row>
+              <cell>mirror</cell>
+              <cell>Mirror</cell>
+            </row>
+            <row>
+              <cell>coin</cell>
+              <cell>Coins</cell>
+            </row>
+            <row>
+              <cell>drawing</cell>
+              <cell>Eastern Drawing</cell>
+            </row>
+            <row>
+              <cell>eastern-ceramic</cell>
+              <cell>Eastern Ceramic</cell>
+            </row>
+            <row>
+              <cell>eastern-bronze</cell>
+              <cell>Eastern Bronze</cell>
+            </row>
+            <row>
+              <cell>eastern-painting</cell>
+              <cell>Eastern Painting</cell>
+            </row>
+            <row>
+              <cell>engraving</cell>
+              <cell>Engraved print</cell>
+            </row>
+            <row>
+              <cell>gem-cameo</cell>
+              <cell>Gems and Cameos</cell>
+            </row>
+            <row>
+              <cell>inscription</cell>
+              <cell>Inscription</cell>
+            </row>
+            <row>
+              <cell>jewellery</cell>
+              <cell>Jewellery</cell>
+            </row>
+            <row>
+              <cell>menhir</cell>
+              <cell>Menhir</cell>
+            </row>
+            <row>
+              <cell>mosaic</cell>
+              <cell>Mosaic</cell>
+            </row>
+            <row>
+              <cell>painting</cell>
+              <cell>Wall Painting</cell>
+            </row>
+            <row>
+              <cell>papyrus</cell>
+              <cell>Papyrus</cell>
+            </row>
+            <row>
+              <cell>aerialphotograph</cell>
+              <cell>Aerial Photograph</cell>
+            </row>
+            <row>
+              <cell>photograph</cell>
+              <cell>Photograph</cell>
+            </row>
+            <row>
+              <cell>etching</cell>
+              <cell>Etching</cell>
+            </row>
+            <row>
+              <cell>plan</cell>
+              <cell>Site plan</cell>
+            </row>
+            <row>
+              <cell>map</cell>
+              <cell>Map</cell>
+            </row>
+            <row>
+              <cell>portrait</cell>
+              <cell>Portrait</cell>
+            </row>
+            <row>
+              <cell>print</cell>
+              <cell>Eastern Print</cell>
+            </row>
+            <row>
+              <cell>sarcophagus</cell>
+              <cell>Sarcophagus</cell>
+            </row>
+            <row>
+              <cell>statuette</cell>
+              <cell>Statuette</cell>
+            </row>
+            <row>
+              <cell>statue</cell>
+              <cell>Statue</cell>
+            </row>
+            <row>
+              <cell>textile</cell>
+              <cell>Textile</cell>
+            </row>
+            <row>
+              <cell>weapon</cell>
+              <cell>Weapon</cell>
+            </row>
+            <row>
+              <cell>western-bronze</cell>
+              <cell>Western Bronze</cell>
+            </row>
+            <row>
+              <cell>western-ceramic</cell>
+              <cell>Western Ceramic</cell>
+            </row>
+            <row>
+              <cell>western-sculpture</cell>
+              <cell>Western Sculpture</cell>
+            </row>
+          </table>
+        </div>
+        <div>
+          <head>Mapping of types</head>
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" rend="tiny">
+            <type url="http://arachne.uni-koeln.de/vocabulary/objectType#-lebewesen" type="other"/>
+            <type url="http://arachne.uni-koeln.de/vocabulary/objectType#anthropomorpher" type="other"/>
+            <type url="http://arachne.uni-koeln.de/vocabulary/objectType#architektur" type="architecture"/>
+            <type url="http://arachne.uni-koeln.de/vocabulary/objectType#attischer" type="western-ceramic"/>
+            <type url="http://arachne.uni-koeln.de/vocabulary/objectType#bauornamentik" type="architecture"/>
+            <type url="http://id.clarosnet.org/type/Man-Made_Object/cartographic" type="map"/>
+            <type url="http://id.clarosnet.org/type/Man-Made_Object/graphic" type="graphic"/>
+            <type url="http://id.clarosnet.org/type/Man-Made_Object/map" type="map"/>
+            <type url="http://purl.org/NET/Claros/vocab#Ashmolean/Category/bound_volume" type="bound-volume"/>
+            <type url="http://purl.org/NET/Claros/vocab#Ashmolean/Category/ceramic" type="western-ceramic"/>
+            <type url="http://purl.org/NET/Claros/vocab#Ashmolean/Category/drawing" type="drawing"/>
+          </egXML>
+        </div>
+        <div>
+          <head>Technologies?</head>
+          <list type="gloss">
+            <label>Servers</label>
+            <item>1 Linux Ubuntu, 1 Windows</item>
+            <label>Normalize phase</label>
+            <item>XSLT manipulation of RDF/XML</item>
+            <label>Data inference</label>
+            <item>SPARQL queries in Python wrapper</item>
+            <label>Triple store and SPARQL endpoint</label>
+            <item>Jena, in Fuseki packaging</item>
+            <label>Public web site</label>
+            <item>MS SQL server and ASP pages</item>
+            <label>Data web site</label>
+            <item>Humfrey (local open source), Elasticsearch (Lucene) and extra Python</item>
+          </list>
+        </div>
+        <div>
+          <head>What <hi>does</hi> work?</head>
+          <list>
+            <item>Mapping to CIDOC CRM RDF</item>
+            <item>Conversion to SQL database to drive user-friendly web site</item>
+            <item>Loading into triplestore with SPARQL endpoint</item>
+            <item>Map-based display and textual searching</item>
+            <item>Export to Pelagios</item>
+          </list>
+        </div>
+        <div>
+          <head>What works, but not as well we would like?</head>
+          <list>
+            <item>Provision of data by automated means</item>
+            <item>Joining up places internally</item>
+            <item>Mapping to common taxonomy</item>
+            <item>Mapping places to Pleiades</item>
+          </list>
+        </div>
+        <div>
+          <head>What does <hi>not</hi> work yet?</head>
+          <list>
+            <item>Updating of individual datasets by partners</item>
+            <item>Location-based searching</item>
+            <item>Managing periods intelligently</item>
+          </list>
+        </div>
+        <div>
+          <head>What can we do with the places component of CLAROS (1)?</head>
+          <list>
+            <item>Map the majority of commonly-occurring find spots to a
+    geolocation (at the city level)</item>
+            <item>Map some current location places to a geolocation</item>
+            <item>Access c.125000 objects via find spot (out of c.400000)</item>
+            <item>Access c.161000 people via a birth place (out of c.250000)</item>
+          </list>
+        </div>
+        <div>
+          <head>What can we do with the places component of CLAROS (2)?</head>
+          <list>
+            <item>Show results of search on Google/Open StreetMap maps</item>
+            <item>Select places on Google/Open StreetMap maps</item>
+            <item>Find places by name browse</item>
+            <item>Find places by free text search combined with material/type/title/name</item>
+            <item>Find objects nearby (by radius) current object</item>
+            <item>Find places nearby current place</item>
+          </list>
+          <p>Searches can be accessed by REST url</p>
+        </div>
+        <div>
+          <head>Searching nearby a coordinate</head>
+          <p>
+            <graphic url="Images/clarosdatanearby.png"/>
+          </p>
+        </div>
+        <div>
+          <head>Known places</head>
+          <list>
+            <item>c.9300 places known</item>
+            <item>c.6200 places geolocated</item>
+            <item>c.1500 places linked to Pleiades</item>
+            <item>c.4330 places linked to geonames.org</item>
+          </list>
+        </div>
+        <div>
+          <head>What remains to be done at the data level?</head>
+          <list>
+            <item>Resolving duplicates
+    <list><item>same geonames ID? done.</item><item>same pleiades ID? done.</item><item>same name? done.</item><item>similar geolocation. TODO.</item><item>similar name. TODO.</item></list>
+    </item>
+            <item>Finding new geolocations
+    <list><item>simple name, waiting to be found. eg Dayton / Ohio/</item><item>obscure, but known, name. eg Maiori Nuraghe,  Sardinia</item><item>obscure place. eg Yukarõ Dodurga</item><item>confusing names. eg Romische Stadt von Ampurias / Gerona (P) / Cataluna</item><item>sites within known places. eg <q>Rome, In der Ecke eines
+      Hauses nahe S. Maria in Pace</q></item></list>
+    </item>
+          </list>
+          <p>All this assumes that the partners do not provide geonames or
+  Pleiades links</p>
+        </div>
+        <div>
+          <head>What remains to be done at the interface level?</head>
+          <list>
+            <item>Browsing by place hierarchy</item>
+            <item>Click on map to find places</item>
+            <item>Filter places by date range of objects/people</item>
+            <item>Add periodization to place names</item>
+          </list>
+        </div>
+      </div>
+      <div>
+        <head>What else?</head>
+        <p>For example, image-based searching</p>
+        <p>
+          <graphic url="Images/imagerecognition.jpg"/>
+        </p>
+
+      <div>
+        <head>Image search</head>
+        <p>
+          <graphic url="Images/imagesearch.png"/>
+        </p>
+      </div>
+        <div>
+          <head>Shape representation</head>
+          <p>
+            <graphic url="images/shaperepresentation.jpg"/>
+          </p>
+        </div>
+        <div>
+          <head>Vase shape space</head>
+          <p>
+            <graphic height="80%" url="images/vasespace.jpg"/>
+          </p>
+        </div>
+        <div>
+          <head>Compute three nearest neighbours for each vase</head>
+          <p>
+            <graphic width="80%" url="images/vaseneighbours.jpg"/>
+          </p>
+        </div>
+        <div>
+          <head>What conclusions can one draw from CLAROS?</head>
+          <list type="ordered">
+            <item>working with RDF and CIDOC CRM is not so very scary</item>
+            <item>aligning data to use the same taxonomies is harder</item>
+            <item>exporting data in RDF as a one-off is easy; making it
+      harvestable is harder</item>
+            <item>this is only a start. we still need to find the research
+      questions it answers</item>
+          </list>
+          <p>
+            <ptr target="http://www.clarosnet.org/"/>
+          </p>
+        </div>
+      </div>
+    </body>
+  </text>
+</TEI>

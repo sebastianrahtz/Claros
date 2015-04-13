@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:claros="http://purl.org/NET/Claros/vocab#">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>CLAROS - work in progress</title>
+        <author>Sebastian Rahtz, Head of Information and Support Group,
+	Oxford University Computing Services<lb/>Lexicon of Greek Personal Names<lb/>Metamorphoses sub-project of CLAROS</author>
+      </titleStmt>
+      <editionStmt>
+        <edition>
+          <date>Oxford, May 2011</date>
+        </edition>
+      </editionStmt>
+      <publicationStmt>
+        <publisher>University of Oxford</publisher>
+        <availability>
+          <p>Freely available for use and derivative works under a Creative Commons Attribution
+            license.</p>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <p>earlier talks</p>
+      </sourceDesc>
+    </fileDesc>
+    <revisionDesc>
+      <change>
+        <date>$LastChangedDate: 2011-01-21 12:02:51 +0000 (Fri, 21 Jan 2011) $.</date>
+        <name>$LastChangedBy: rahtz $</name>
+        <note>$LastChangedRevision: 511 $</note>
+      </change>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div type="outer">
+        <head>CLAROS Vision</head>
+        <p>CLAROS is a collaborative initiative led by the University
+	of Oxford to develop unified access to a range of art and archaeology resources. The current
+	plans
+          <list type="ordered"><item>Development of a humanities dataweb combining leading classical art history and
+	    related databases</item><item>Demonstration interfaces to explore classical art</item><item>Innovative searching based on shape analysis</item><item>Large-scale RDF database providing a testbed for performance research</item><item>Changing the approach to data discovery by development of a conversational Companion</item></list>
+	</p>
+      </div>
+      <div>
+        <head>Key technologies and choices</head>
+        <list>
+          <item>Our target is to produce <hi>linked open data</hi></item>
+          <item>Web sites are exemplars not sole gateways</item>
+          <item>We follow the semantic approach of RDF and a public ontology</item>
+        </list>
+        <p>We aim at <hi>standardization</hi> to assist
+	  <hi>long-term preservation</hi> and <hi>extensibility</hi>.</p>
+      </div>
+      <div>
+        <head>The semantic web mantra, 5 star data</head>
+        <p>We aim to be at level 5 during 2011.</p>
+        <table>
+          <row>
+            <cell align="right">
+              <hi>
+                <code>★</code>
+              </hi>
+            </cell>
+            <cell>Available on the web (whatever format), but with an open licence<lb/></cell>
+          </row>
+          <row>
+            <cell align="right">
+              <hi>
+                <code>★★</code>
+              </hi>
+            </cell>
+            <cell>Available as machine-readable structured data (e.g. Excel instead of image scan of a table)<lb/></cell>
+          </row>
+          <row>
+            <cell align="right">
+              <hi>
+                <code>★★★</code>
+              </hi>
+            </cell>
+            <cell>As (2) plus non-proprietary format (e.g. CSV instead of Excel)<lb/></cell>
+          </row>
+          <row>
+            <cell align="right">
+              <hi>
+                <code>★★★★</code>
+              </hi>
+            </cell>
+            <cell>All the above, plus: Use open standards from W3C (RDF and SPARQL) to identify things, so that people can point at your stuff<lb/></cell>
+          </row>
+          <row>
+            <cell align="right">
+              <hi>
+                <code>★★★★★</code>
+              </hi>
+            </cell>
+            <cell>All the above, plus: Link your data to other people’s data to provide context</cell>
+          </row>
+          <row>
+            <cell>
+	    </cell>
+          </row>
+        </table>
+        <p>
+          <ptr target="http://www.w3.org/DesignIssues/LinkedData.html"/>
+        </p>
+      </div>
+      <div type="outer">
+        <head>CLAROS: data resources </head>
+        <p>University of Oxford – Beazley Archive: pottery, gems, plaster casts, photos</p>
+	<p>University of Oxford - Lexicon of Greek Personal Names: records of Greek names and persons</p>
+	<p>University of Cologne – Research Sculpture Archive: records of sculpture</p>
+	<p>University of Paris X - Lexicon Iconographicum Mythologiae Classicae: images of mythological and religious iconography</p>
+	<p>University of Oxford - Ashmolean Museum: Cresswell Archive of antiquarian photographs, and Jameel collection of eastern art</p>
+        <p>A total of about 2 million records and linked images</p>
+      </div>
+
+      <div>
+        <head>Implementation of CLAROS data web approach</head>
+        <list>
+          <item><hi>No changes</hi> to the databases of the individual sources</item>
+          <item><hi>Semantic differences</hi> between data sources
+	    are resolved by mapping selected metadata from each source
+	    to CIDOC-CRM</item>
+          <item><hi>Syntactic differences</hi> between data sources are
+	    resolved by converting the selected metadata to RDF,
+	    accessed from a single triple store using SPARQL</item>
+          <item><hi>The co-reference problem</hi>, where the 
+	    same entity is known by different names in different databases,
+	    is solved by creating a co-reference service to disambiguate synonyms</item>
+        </list>
+        <p>CLAROS is simply a resource discovery service using
+	    minimal metadata — the user is ultimately directed back to
+	    the original data publisher's site for full information
+	    about an event, object, place or person of interest.</p>
+      </div>
+      <div>
+        <head>Usage of CLAROS</head>
+        <table rend="tiny">
+          <row>
+            <cell>Claros/vocab#Counter</cell>
+            <cell>33289</cell>
+            <cell>crm-owl#P102_has_title</cell>
+            <cell>259377</cell>
+          </row>
+          <row>
+            <cell>Claros/vocab#Period</cell>
+            <cell>78999</cell>
+            <cell>crm-owl#P103_was_intended_for</cell>
+            <cell>102</cell>
+          </row>
+          <row>
+            <cell>crm-owl#E12_Production</cell>
+            <cell>175668</cell>
+            <cell>crm-owl#P108i_was_produced_by</cell>
+            <cell>175668</cell>
+          </row>
+          <row>
+            <cell>crm-owl#E17_Type_Assignment</cell>
+            <cell>188685</cell>
+            <cell>crm-owl#P10F_falls_within</cell>
+            <cell>41</cell>
+          </row>
+          <row>
+            <cell>crm-owl#E21_Person</cell>
+            <cell>251823</cell>
+            <cell>crm-owl#P111_added</cell>
+            <cell>154408</cell>
+          </row>
+          <row>
+            <cell>crm-owl#E22_Man-Made_Object</cell>
+            <cell>260389</cell>
+            <cell>crm-owl#P111i_was_added_by</cell>
+            <cell>154408</cell>
+          </row>
+          <row>
+            <cell>crm-owl#E25_Man-Made_Feature</cell>
+            <cell>164137</cell>
+            <cell>crm-owl#P126_employed</cell>
+            <cell>137856</cell>
+          </row>
+          <row>
+            <cell>crm-owl#E31_Document</cell>
+            <cell>185744</cell>
+            <cell>crm-owl#P127_has_broader_term</cell>
+            <cell>12</cell>
+          </row>
+          <row>
+            <cell>crm-owl#E35_Title</cell>
+            <cell>259377</cell>
+            <cell>crm-owl#P131_is_identified_by</cell>
+            <cell>503646</cell>
+          </row>
+          <row>
+            <cell>crm-owl#E38_Image</cell>
+            <cell>482688</cell>
+            <cell>crm-owl#P138i_has_representation</cell>
+            <cell>482688</cell>
+          </row>
+          <row>
+            <cell>crm-owl#E39_Actor</cell>
+            <cell>50575</cell>
+            <cell>crm-owl#P14_carried_out_by</cell>
+            <cell>50575</cell>
+          </row>
+          <row>
+            <cell>crm-owl#E3_Condition_State</cell>
+            <cell>62806</cell>
+            <cell>crm-owl#P16i_was_used_for</cell>
+            <cell>127682</cell>
+          </row>
+          <row>
+            <cell>crm-owl#E41_Appellation</cell>
+            <cell>989</cell>
+            <cell>crm-owl#P1_is_identified_by</cell>
+            <cell>989</cell>
+          </row>
+          <row>
+            <cell>crm-owl#E42_Identifier</cell>
+            <cell>143468</cell>
+            <cell>crm-owl#P2_has_type</cell>
+            <cell>137483</cell>
+          </row>
+          <row>
+            <cell>crm-owl#E47_Place_Spatial_Coordinates</cell>
+            <cell>607</cell>
+            <cell>crm-owl#P3_has_note</cell>
+            <cell>84298</cell>
+          </row>
+          <row>
+            <cell>crm-owl#E48_Place_Name</cell>
+            <cell>278788</cell>
+            <cell>crm-owl#P41i_was_classified_by</cell>
+            <cell>188686</cell>
+          </row>
+          <row>
+            <cell>crm-owl#E4_Period</cell>
+            <cell>41</cell>
+            <cell>crm-owl#P42_assigned</cell>
+            <cell>414506</cell>
+          </row>
+          <row>
+            <cell>crm-owl#E52_Time-Span</cell>
+            <cell>331783</cell>
+            <cell>crm-owl#P44_has_condition</cell>
+            <cell>62806</cell>
+          </row>
+          <row>
+            <cell>crm-owl#E53_Place</cell>
+            <cell>536762</cell>
+            <cell>crm-owl#P45_consists_of</cell>
+            <cell>989</cell>
+          </row>
+          <row>
+            <cell>crm-owl#E55_Type</cell>
+            <cell>552064</cell>
+            <cell>crm-owl#P48_has_preferred_identifier</cell>
+            <cell>143468</cell>
+          </row>
+          <row>
+            <cell>crm-owl#E57_Material</cell>
+            <cell>138845</cell>
+            <cell>crm-owl#P4_has_time-span</cell>
+            <cell>331783</cell>
+          </row>
+          <row>
+            <cell>crm-owl#E61_Time_Primitive</cell>
+            <cell>251823</cell>
+            <cell>crm-owl#P53_has_former_or_current_location</cell>
+            <cell>169122</cell>
+          </row>
+          <row>
+            <cell>crm-owl#E67_Birth</cell>
+            <cell>251823</cell>
+            <cell>crm-owl#P56_bears_feature</cell>
+            <cell>9729</cell>
+          </row>
+          <row>
+            <cell>crm-owl#E79_Part_Addition</cell>
+            <cell>154408</cell>
+            <cell>crm-owl#P67i_is_referred_to_by</cell>
+            <cell>185744</cell>
+          </row>
+          <row>
+            <cell>crm-owl#E7_Activity</cell>
+            <cell>127682</cell>
+            <cell>crm-owl#P70i_is_documented_in</cell>
+            <cell>260389</cell>
+          </row>
+          <row>
+            <cell>crm-owl#E82_Actor_Appellation</cell>
+            <cell>503646</cell>
+            <cell>crm-owl#P7_took_place_at</cell>
+            <cell>70754</cell>
+          </row>
+          <row>
+            <cell>wgs84_pos#Point</cell>
+            <cell>607</cell>
+            <cell>crm-owl#P82_at_some_time_within</cell>
+            <cell>330822</cell>
+          </row>
+          <row>
+            <cell>Claros/vocab#not_after</cell>
+            <cell>1075</cell>
+            <cell>crm-owl#P87_is_identified_by</cell>
+            <cell>279395</cell>
+          </row>
+          <row>
+            <cell>Claros/vocab#not_before</cell>
+            <cell>1066</cell>
+            <cell>crm-owl#P89_falls_within</cell>
+            <cell>39406</cell>
+          </row>
+          <row>
+            <cell>Claros/vocab#period_begin</cell>
+            <cell>654</cell>
+            <cell>crm-owl#P98i_was_born</cell>
+            <cell>251823</cell>
+          </row>
+          <row>
+            <cell>Claros/vocab#period_end</cell>
+            <cell>632</cell>
+            <cell>Claros/vocab#c-subject-findLocationName</cell>
+            <cell>13588</cell>
+          </row>
+          <row>
+            <cell>Claros/vocab#starts_within_span</cell>
+            <cell>118</cell>
+            <cell>Claros/vocab#c-subject-objectShape</cell>
+            <cell>669</cell>
+          </row>
+          <row>
+            <cell>Claros/vocab#subject-countingKey</cell>
+            <cell>33289</cell>
+            <cell>Claros/vocab#c-subject-objectType</cell>
+            <cell>269</cell>
+          </row>
+          <row>
+            <cell>Claros/vocab#subject-findLocationName</cell>
+            <cell>15234</cell>
+            <cell>Claros/vocab#c-subject-period-begin</cell>
+            <cell>363</cell>
+          </row>
+          <row>
+            <cell>Claros/vocab#subject-findPlaceName</cell>
+            <cell>14993</cell>
+            <cell>Claros/vocab#c-subject-period-end</cell>
+            <cell>364</cell>
+          </row>
+          <row>
+            <cell>Claros/vocab#subject-findRegionName</cell>
+            <cell>448</cell>
+            <cell>Claros/vocab#count</cell>
+            <cell>269</cell>
+          </row>
+          <row>
+            <cell>Claros/vocab#subject-has-term</cell>
+            <cell>103586</cell>
+            <cell>Claros/vocab#ends_within_span</cell>
+            <cell>138</cell>
+          </row>
+          <row>
+            <cell>Claros/vocab#subject-objectShape</cell>
+            <cell>669</cell>
+            <cell>Claros/vocab#hasLiteral</cell>
+            <cell>984013</cell>
+          </row>
+          <row>
+            <cell>Claros/vocab#subject-objectType</cell>
+            <cell>269</cell>
+            <cell>Claros/vocab#has_geoObject</cell>
+            <cell>607</cell>
+          </row>
+          <row>
+            <cell>Claros/vocab#subject-period-begin</cell>
+            <cell>635</cell>
+            <cell>Claros/vocab#subject-period-end</cell>
+            <cell>623</cell>
+          </row>
+        </table>
+      </div>
+      <div>
+        <head>CLAROS and CIDOC CRM</head>
+        <p>We have found CIDOC CRM to be pretty well suited for CLAROS data</p>
+        <list>
+          <item>The CIDOC choices are documented at 
+	    <ptr target="http://www.clarosnet.org/wiki/index.php"/></item>
+          <item>There is the useful OWL implementation of CIDOC CRM by Erlangen University</item>
+          <item>We focused initially on the CIDOC CRM Core terms, and employed additional terms as necessary</item>
+          <item>CIDOC CRM Core can describe the complex provenance of artefacts and
+	      their relationships with key events, people, places and times</item>
+          <item>The CIDOC CRM "E55.Type" system is particularly
+	      useful to permit faceted/drill-down queries,
+	      e.g. restricting results by the shape of a pot, but we probably abuse it.
+	      </item>
+        </list>
+      </div>
+      <div>
+        <head>Example: a Greek </head>
+        <quote>
+	    An inscription published in <hi>Inscriptiones Graecae</hi> volume XI (4),
+	    p. 1256 documents a man called 
+	    <hi>Παράμονος</hi>, attested at <hi>Delos</hi> in the <hi>3rd or 2nd century</hi>
+	    BC. He is noted as being the father of someone called
+	    <hi>Δημήτριος</hi>.
+	  </quote>
+      </div>
+      <div>
+        <head>The Greek in data source</head>
+        <p>Relational DB:
+<eg>
+    id    |   name    |  floruit   | sex |  status  |   settlement    
+----------+-----------+------------+-----+----------+-----------------
+ V1-43005 | Παράμονος | hell.-imp. |   1 |          | Mytilene
+ V1-47408 | Παράμονος | m.iii BC   |   1 | paroikos | 
+ V1-76555 | Παράμονος | ii-i BC    |   1 |          | Eretria Vathia
+ V1-76557 | Παράμονος | c.100BC    |   1 |          | Histiaia-Oreos
+ V1-78877 | Παράμονος | iv/iii BC  |   1 |          | Eretria
+ V1-85238 | Παράμονος | iii/ii BC  |   1 |          | 
+</eg>
+or XML:
+          <egXML xmlns="http://www.tei-c.org/ns/Examples" rend="tiny"><person xmlns="http://www.tei-c.org/ns/1.0" n="1-7" xml:id="V1-85238"><sex value="1"/><persName type="main" nymRef="#nPara1monos">Παράμονος</persName><birth notAfter="-0175" notBefore="-0225"><placeName key="LGPN_11270" evidence="attested">Delos</placeName></birth><floruit>iii/ii BC</floruit><state key="#relationship"><label>f. <persName type="relationship" xml:lang="el-grc" nymRef="#nDhmh1trios">Δημήτριος</persName></label></state><bibl><title>IG</title> XI (4) 1256</bibl></person></egXML>
+	  </p>
+      </div>
+      <div>
+        <head>A CIDOC structure for a person like this</head>
+        <p>
+          <graphic url="crm_model.png"/>
+        </p>
+      </div>
+      <div>
+        <head>The Greek expressed in RDF XML</head>
+        <egXML xmlns="http://www.tei-c.org/ns/Examples" rend="tiny">
+          <E21.Person xmlns="http://purl.org/NET/crm-owl#" rdf:about="http://clas-lgpn2.classics.ox.ac.uk/id/V1-85238">
+            <P131.is_identified_by xml:lang="el-grc">
+              <E82.Actor_Appellation>
+                <rdf:value>Παράμονος</rdf:value>
+              </E82.Actor_Appellation>
+            </P131.is_identified_by>
+            <P131.is_identified_by xml:lang="el-grc-x-lgpn">
+              <E82.Actor_Appellation>
+                <rdf:value>Paramonos</rdf:value>
+              </E82.Actor_Appellation>
+            </P131.is_identified_by>
+            <P98.was_born>
+              <E67.Birth>
+                <P4.has_time-span>
+                  <E52.Time-Span>
+                    <P79.at_some_time_within>
+                      <claros:Period>
+                        <claros:period_begin rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">-0225</claros:period_begin>
+                        <claros:period_end rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">-0175</claros:period_end>
+                      </claros:Period>
+                    </P79.at_some_time_within>
+                  </E52.Time-Span>
+                </P4.has_time-span>
+                <P7.took_place_at rdf:resource="http://clas-lgpn2.classics.ox.ac.uk/placeid/LGPN_11270"/>
+              </E67.Birth>
+            </P98.was_born>
+          </E21.Person>
+        </egXML>
+      </div>
+      <div>
+	<head>CLAROS work in progress</head>
+	<list>
+	  <item>Link plain text place names to a generic record
+	  (brute-force text matching), and link that to Pleiades and
+	  geonames</item>
+	  <item>Grouping of places by location to refine links and link archaeological data to places</item>
+	  <item>Rationalize use of E55_Type and produce proper hierarchical subject classification</item>
+	  <item>Bring in data from a collection of Athenian museums, the Oxford Roman Economy project,
+	  and the British Schools of Athens and Rome</item>
+	  <item>Re-examine and refine CIDOC CRM subset, and align with eg Europeana</item>
+	  <item>Simplify ingest and maintenance</item>
+	</list>
+      </div>
+    </body>
+  </text>
+</TEI>

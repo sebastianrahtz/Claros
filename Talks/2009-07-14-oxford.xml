@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>CLAROS — bringing classical art to a global public </title>
+        <author><hi>Donna Kurtz</hi> (Beazley Archive, Classics),
+	  <hi>David Shotton</hi> (Department of Zoology),
+	  <hi>Florian Schroff</hi> (Engineering Science),
+	  <hi>Yorick Wilks</hi> (Oxford Internet Institute),
+	  <hi>Greg Parker</hi> (Beazley Archive),
+	  <hi>Graham Klyne</hi> (Department of Zoology), and
+	  <hi>Andrew Zisserman</hi> (Engineering Science). <lb/><emph>Presented by Sebastian
+	Rahtz <lb/>(Oxford University Computing Services).</emph></author>
+      </titleStmt>
+      <editionStmt>
+        <edition>
+          <date>Oxford, December 12th 2009</date>
+        </edition>
+      </editionStmt>
+      <publicationStmt>
+        <publisher>University of Oxford</publisher>
+        <availability>
+          <p>Freely available for use and derivative works under a Creative Commons Attribution
+            license.</p>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Conference paper, and Shotton talk</p>
+      </sourceDesc>
+    </fileDesc>
+    <revisionDesc>
+      <change>
+        <date>$LastChangedDate: 2014-04-21 17:17:33 +0100 (Mon, 21 Apr 2014) $.</date>
+        <name>$LastChangedBy: rahtz $</name>
+        <note>$LastChangedRevision: 3477 $</note>
+      </change>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div type="outer">
+        <head>CLAROS: data resources </head>
+	<p>Target: <list>
+	  <item>data web integrating access to the world’s scholarly information on classical art</item>
+	  <item>semantic integration of the distributed, heterogeneous
+	  and non-interoperable digital resources held by CLAROS
+	  partners</item>
+	</list></p>
+        <p>
+          <hi>University of Oxford – Beazley Archive:</hi>
+          <list>
+            <item>Electronic documentation started 1979</item>
+            <item>150,000 Pottery records and 130,000 images</item>
+            <item>50,000 Engraved gem and cameo records and 30,000 images</item>
+            <item>900 Plaster casts records (classical sculpture) and 1000 images</item>
+            <item>900 Antiquarian photographs</item>
+          </list>
+        </p>
+        <p>
+          <hi>University of Oxford - Lexicon of Greek Personal Names:</hi>
+          <list>
+            <item>Electronic documentation started 1975.</item>
+            <item>400,000 recorded individuals. Over 35,000 unique  personal names.</item>
+          </list>
+        </p>
+	<div>
+	  <head>CLAROS datasets (2)</head>
+	  <p>
+	    <hi>University of Cologne – Research Sculpture Archive:</hi>
+	    <list>
+	      <item>Electronic documentation started 1972</item>
+	      <item>250,000 Sculpture records, 490,000 images.</item>
+	    </list>
+	  </p>
+	  <p>
+	    <hi>German Archaeological Institute:</hi>
+	    <list>
+	      <item>1,500,000 photographs</item>
+	    </list>
+	  </p>
+	  <p>
+	    <hi>University of Paris X - Lexicon Iconographicum Mythologiae Classicae:</hi>
+	    <list>
+	      <item>Created 1972.</item>
+	      <item>100,000 records, 180,000 images of mythological and religious iconography from 2,000 museums and collections.</item>
+	    </list>
+	  </p>
+	  <p>A total of 2 million records and images</p>
+	</div>
+	
+	<div>
+	  <head>Disparate technologies</head>
+	  <list type="gloss">
+	    <label>Beazley Archive</label>
+	    <item> ‘XDB’ – XML data, SQL Server Database, ASP front end.</item>
+	    <label>Cologne Research Archive and German Archaeological Institute</label>
+	    <item> ‘Arachne’  - MySQL database, PHP front end.</item>
+	    <label>LIMC</label>
+            <item> MySQL database, PHP front end.</item>
+            <label>LGPN</label>
+            <item> Ingres relational database, also available as an
+	    eXist XML database serving TEI-XML data. XQuery front end.</item>
+          </list>
+        </div>
+
+        <div>
+          <head>The CLAROS data web approach</head>
+	  <list>
+	    <item><hi>No changes</hi> to the databases of the individual sources</item>
+	    
+	    <item><hi>Semantic differences</hi> between data sources
+	    are resolved by mapping selected metadata from each source
+	    to CIDOC-CRM</item>
+	    
+	    <item><hi>Syntactic differences</hi> between data sources are
+	    resolved by converting the selected metadata to RDF,
+	    accessed from a single triple store using SPARQL</item>	    
+	  </list>
+	</div>
+	
+	<div>
+	  <head>Combining data</head>
+	  <p>
+	    <graphic height="80%" url="combiningdata.png"/>
+	  </p>
+	</div>
+	
+	  <div>
+	    <head>System Components</head>
+	    <p>
+	      <graphic height="85%" url="systemcomponents.png"/>
+	    </p>
+	  </div>
+	  
+	  <div>
+	    <head>Technicalities</head>
+	    <p>
+	      <graphic width="90%" url="technicalities.png"/>
+	    </p>
+	  </div>
+	  
+	  
+	  <div>
+	    <head>CLAROS and CIDOC CRM</head>
+	    <p>We have found CIDOC CRM to be extremely well suited for CLAROS data</p>
+	    <list>
+	      <item>We focused initially on the CIDOC CRM Core terms, and employed additional terms as necessary</item>
+
+	      <item>CIDOC CRM Core can describe the complex provenance of artefacts and
+	      their relationships with key events, people, places and times</item>
+	      <item>The necessary complexity of the resulting RDF/XML
+	      is mostly invisible to developers, and entirely hidden
+	      from users </item>
+
+	      <item>The CIDOC CRM "E55.Type" system is particularly
+	      useful to permit faceted/drill-down queries,
+	      e.g. restricting results by the shape of a pot
+	      </item>
+	    </list>
+	  </div>
+	  
+	  <div>
+	    <head>RDF example</head>
+	    <egXML xmlns="http://www.tei-c.org/ns/Examples" rend="tiny">
+    <E21.Person xmlns="http://purl.org/NET/crm-owl#" rdf:about="http://clas-lgpn2.classics.ox.ac.uk/id/V1-85238">
+        <P131.is_identified_by xml:lang="el-grc">
+            <E82.Actor_Appellation>
+                <rdf:value>Παράμονος</rdf:value>
+            </E82.Actor_Appellation>
+        </P131.is_identified_by>
+        <P131.is_identified_by xml:lang="el-grc-x-lgpn">
+            <E82.Actor_Appellation>
+                <rdf:value>Paramonos</rdf:value>
+            </E82.Actor_Appellation>
+        </P131.is_identified_by>
+        <P98.was_born>
+            <E67.Birth>
+                <P4.has_time-span>
+                    <E52.Time-Span>
+                        <P79.at_some_time_within>
+                            <E61.Time_Primitive>
+                                <claros:not_before xmlns:claros="http://purl.org/NET/Claros/vocab#" rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">-0225</claros:not_before>
+                                <claros:not_after xmlns:claros="http://purl.org/NET/Claros/vocab#" rdf:datatype="http://www.w3.org/2001/XMLSchema#gYear">-0175</claros:not_after>
+                            </E61.Time_Primitive>
+                        </P79.at_some_time_within>
+                    </E52.Time-Span>
+                </P4.has_time-span>
+                <P7.took_place_at rdf:resource="http://clas-lgpn2.classics.ox.ac.uk/placeid/LGPN_11270"/>
+            </E67.Birth>
+        </P98.was_born>
+    </E21.Person>
+	    </egXML>
+	  </div>
+	  <div>
+	    <head>CLAROS extensions to CIDOC CRM</head>
+	    <p>A very few extensions were needed. e.g.
+	    <list>
+	    <item> some additional RDF
+	vocabulary for time metadata relating to imprecise periods and eras
+	i.e. <code>claros:not_before</code> and <code>claros:not_after</code>, applied to a
+	<code>crm:E61.Time_Primitive object</code></item>
+	    </list></p>
+
+	<p>This allows us to capture partial or imprecise quantitative
+	information that is not expressed by a <code>crm:has_PrimitiveTime</code>
+	property</p>
+	
+	<p>New	properties have been introduced as OWL datatype properties on the
+	primtive value objects</p>
+	
+	  </div>
+	  <div>
+	    <head>CLAROS dataweb delivery</head>
+	    <p>CLAROS is simply a resource discovery service using
+	    minimal metadata — the user is ultimately directed back to
+	    the original data publisher's site for full information
+	    about an event, object, place or person of interest.</p>
+	    
+	  </div>
+
+	</div>
+	
+      <div type="outer">
+        <head>The CLAROS interface </head>
+	    <list>
+	      <item>Each partner can integrate CLAROS data from the other partners using his own programming platform.</item>
+	      <item>As an example Beazley Archive set up a <emph>CLAROS Explorer</emph> show what is possible.</item>
+	    </list>
+	    <p>
+	      <graphic width="80%" url="explorer.jpg"/>
+	    </p>	    
+	    
+	    <div>
+	      <head>The CLAROS homepage</head>
+	      <p>
+		<graphic height="70%" url="homepage.png"/>
+	      </p>
+	    </div>
+
+	    <div>
+	      <head>CLAROS faceted browser</head>
+	      <p>
+		<graphic  height="70%"  url="faceted.png"/>
+	      </p>
+	    </div>
+
+      </div>
+      
+      <div type="outer">
+        <head>Image recognition </head>
+          <p>
+            <graphic url="imagerecognition.jpg"/>
+          </p>
+
+        <div>
+          <head>Shape representation</head>
+          <p>
+            <graphic url="shaperepresentation.jpg"/>
+          </p>
+        </div>
+        <div>
+          <head>Vase shape space</head>
+          <p>
+            <graphic   height="80%" url="vasespace.jpg"/>
+          </p>
+        </div>
+        <div>
+          <head>Compute three nearest neighbours for each vase</head>
+          <p>
+            <graphic  width="80%" url="vaseneighbours.jpg"/>
+          </p>
+        </div>
+<!--        <div>
+          <head>Vase search interface (1)</head>
+          <p>
+            <graphic  height="40%" url="vasedemo1.jpg"/>
+          </p>
+        </div>
+        <div>
+          <head>Vase search interface (2)</head>
+          <p>
+            <graphic  height="80%" url="vasedemo2.jpg"/>
+          </p>
+        </div>
+        <div>
+          <head>Vase search interface (3)</head>
+          <p>
+            <graphic  height="80%" url="vasedemo3.jpg"/>
+          </p>
+        </div>
+-->
+      </div>
+
+      <div type="outer">
+        <head>Companions </head>
+	<list>
+	  <item>Take the interface up a level from text
+	  searching</item>
+	  <item>Provide a personalized avatar: an agent or 'presence'
+	  that stays with the user for long periods of time,
+	  developing a relationship and 'knowing' its owners
+	  preferences and wishes. It will communicate with the user
+	  primarily by using and understanding speech.</item>
+	</list>
+	<p>Part of larger EU <hi>Companions</hi> project: <ptr target="http://www.companions-project.org/"/></p>
+      </div>
+
+      <div type="outer">
+	<head>The relevance of CLAROS</head>
+	<p>We believe that CLAROS is important because
+	<list>
+	  <item>It is not designed to be a demonstrator, but to
+	  deliver real, complete, data</item>
+	  <item>We are testing an ontology, CIDOC CRM, on a proper scale</item>
+	  <item>There is a genuine collaboration between humanities,
+	  engineering and computer science</item>
+	  <item>We show the rest of humanities that the dataweb
+	  approach can work</item>
+	</list>
+	</p>
+	  <div>
+	  <head>The future of CLAROS</head>
+	  <list>
+	    <item>Enhance performance to a level acceptable to the
+	    general public</item>
+	    <item>Bring in new partners with more classical art
+	    data</item>
+	    <item>Develop visual search and analysis interfaces</item>
+	    <item>Research dynamic aggregation</item>
+	    <item>Expand the humanities dataweb concepts
+	    chronologically and geographically</item>
+	  </list>
+	  </div>
+      </div>
+    </body>
+  </text>
+</TEI>
