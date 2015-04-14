@@ -1,3 +1,5 @@
+all: convert extract
+
 convert:
 	for i in *.xlsx; do xlsxtotei $$i `basename $$i .xlsx`.xml;done
 
