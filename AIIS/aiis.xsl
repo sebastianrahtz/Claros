@@ -27,6 +27,9 @@
 		  <xsl:variable name="name">
 		    <xsl:choose>
 		      <xsl:when test="$l='monument type'">mon_type</xsl:when>
+		      <xsl:when test="$l='negative no'">neg_no</xsl:when>
+		      <xsl:when test="$l='neg NO'">neg_no</xsl:when>
+		      <xsl:when test="$l='accession no'">acc_no</xsl:when>
 		      <xsl:when test="$l='general_category'">gen_cat</xsl:when>
 		      <xsl:otherwise><xsl:value-of select="translate(normalize-space($l),' /()\?','_')"/></xsl:otherwise>
 		    </xsl:choose>
@@ -106,21 +109,51 @@
                 </E55_Type>
               </P2_has_type>
             </xsl:if>
-            <xsl:if test="neg_NO">
+            <xsl:if test="neg_no">
               <P1_has_identifier>
                 <E42_identifier rdf:about="http://www.indiastudies.org/AIIS/neg/{neg_no}"/>
               </P1_has_identifier>
             </xsl:if>
             <P62_depicts>
-	      <xsl:if test="crm:idme(monument2nd_name)=''">
-		<xsl:message>deadun: <xsl:copy-of select="."/></xsl:message>
-	      </xsl:if>
-              <E18_Physical_Thing rdf:about="http://www.indiastudies.org/AIIS/place/{crm:idme(monument2nd_name)}">
+	      <xsl:variable name="NAME">
+		  <xsl:choose>
+		    <xsl:when test="monument2nd_name=''">
+		      <xsl:value-of select="complex"/>
+		    </xsl:when>
+		    <xsl:otherwise>
+		      <xsl:value-of select="monument2nd_name"/>
+		    </xsl:otherwise>
+		  </xsl:choose>
+	      </xsl:variable>
+              <E18_Physical_Thing>
+		<xsl:attribute name="rdf:about">
+		  <xsl:text>http://www.indiastudies.org/AIIS/</xsl:text>
+		  <xsl:choose>
+		    <xsl:when test="crm:idme(monument2nd_name)=''">
+		      <xsl:text>complex/</xsl:text>
+		      <xsl:value-of
+			  select="crm:idme(monument2nd_name)"/>
+		    </xsl:when>
+		    <xsl:otherwise>
+		      <xsl:text>place/</xsl:text>
+		      <xsl:value-of
+			  select="crm:idme(monument2nd_name)">
+		      </xsl:value-of>
+		    </xsl:otherwise>
+		  </xsl:choose>
+		</xsl:attribute>
+                  <P87_is_identified_by>
+                      <E41_Appelation rdf:about="http://www.indiastudies.org/AIIS/title/{crm:idme($NAME)}">
+                    <rdfs:label>
+                      <xsl:value-of select="$NAME"/>
+                    </rdfs:label>
+                  </E41_Appelation>
+                </P87_is_identified_by>
 		<xsl:call-template name="keywords"/>
                 <P87_is_identified_by>
-                  <E41_Appelation rdf:about="http://www.indiastudies.org/AIIS/title/{crm:idme(monument2nd_name)}">
+                  <E41_Appelation rdf:about="http://www.indiastudies.org/AIIS/title/{crm:idme($NAME)}">
                     <rdfs:label>
-                      <xsl:value-of select="monument2nd_name"/>
+                      <xsl:value-of select="$NAME"/>
                     </rdfs:label>
                   </E41_Appelation>
                 </P87_is_identified_by>
@@ -148,7 +181,7 @@
                   </P45_consists_of>
                 </xsl:if>
                 <P108i_was_produced_by>
-                  <E12_Production rdf:about="http://www.indiastudies.org/AIIS/production/{crm:idme(monument2nd_name)}">
+                  <E12_Production rdf:about="http://www.indiastudies.org/AIIS/production/{crm:idme($NAME)}">
                     <xsl:if test="patron">
 		      <P14_carried_out_by>
 			<E21_Actor
@@ -206,16 +239,16 @@
                   </E12_Production>
 		</P108i_was_produced_by>
                 <P53_has_former_or_current_location>
-                  <E53_Place rdf:about="http://www.indiastudies.org/AIIS/monument/{crm:idme(monument2nd_name)}">
+                  <E53_Place rdf:about="http://www.indiastudies.org/AIIS/monument/{crm:idme($NAME)}">
                     <P87_is_identified_by>
-                      <E44_Place_Appelation rdf:about="http://www.indiastudies.org/AIIS/placename/{crm:idme(monument2nd_name)}">
+                      <E44_Place_Appelation rdf:about="http://www.indiastudies.org/AIIS/placename/{crm:idme($NAME)}">
                         <rdfs:label>
-                          <xsl:value-of select="monument2nd_name"/>
+                          <xsl:value-of select="$NAME"/>
                         </rdfs:label>
                       </E44_Place_Appelation>
                     </P87_is_identified_by>
                     <xsl:choose>
-                      <xsl:when test="complex">
+                      <xsl:when test="monument2nd_name and complex">
                         <P89_falls_within>
                           <E53_Place rdf:about="http://www.indiastudies.org/AIIS/complex/{crm:idme(complex)}">
                             <P87_is_identified_by>
@@ -336,8 +369,12 @@
           </E44_Place_Appelation>
         </P87_is_identified_by>
         <xsl:for-each select="doc('/Users/rahtz/SVN/Claros/tdb_builder/data/verbatim/metamorphoses-places.rdf')">
-          <xsl:variable name="n" select="concat('http://id.www.indiastudies.org/places/metamorphoses/place/india-',$site)"/>
-          <xsl:for-each select=".//crm:E53_Place[@rdf:about=$n]">
+
+         <xsl:variable name="n"  select="concat('http://id.clarosnet.org/places/metamorphoses/place/india-',$site)"/>
+         <xsl:variable name="n2"  select="concat('http://id.clarosnet.org/places/metamorphoses/place/',$site)"/>
+	 <xsl:message>Look up <xsl:value-of select="$site"/></xsl:message>
+          <xsl:for-each select=".//crm:E53_Place[@rdf:about=$n or @rdf:about=$n2]">
+	    <xsl:message>Found <xsl:value-of select="$site"/></xsl:message>
             <xsl:copy-of select="crm:P87_is_identified_by[crm:E47_Place_Spatial_Coordinates]"/>
           </xsl:for-each>
         </xsl:for-each>
