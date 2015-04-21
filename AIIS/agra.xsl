@@ -28,7 +28,7 @@
 		    <xsl:choose>
 		      <xsl:when test="$l='monument type'">mon_type</xsl:when>
 		      <xsl:when test="$l='general_category'">gen_cat</xsl:when>
-		      <xsl:otherwise><xsl:value-of select="translate($l,' /()','_')"/></xsl:otherwise>
+		      <xsl:otherwise><xsl:value-of select="translate(normalize-space($l),' /()\?','_')"/></xsl:otherwise>
 		    </xsl:choose>
 		  </xsl:variable>
                   <xsl:if test="normalize-space(.)!=''">		    
@@ -113,7 +113,7 @@
             </xsl:if>
             <P62_depicts>
 	      <xsl:if test="crm:idme(monument2nd_name)=''">
-		<xsl:message>deadun</xsl:message>
+		<xsl:message>deadun: <xsl:copy-of select="."/></xsl:message>
 	      </xsl:if>
               <E18_Physical_Thing rdf:about="http://www.indiastudies.org/AIIS/place/{crm:idme(monument2nd_name)}">
 		<xsl:call-template name="keywords"/>
