@@ -56,7 +56,8 @@
 	      xmlns="http://www.cidoc-crm.org/cidoc-crm/"
 	      rdf:about="http://www.indiastudies.org/AIIS/photo/{acc_no}">
 	    <xsl:call-template name="keywords"/>
-            <xsl:variable name="date" select="photo_date"/>
+            <xsl:variable name="date" select="if (photo_date) then
+					      photo_date else 'undated'"/>
                 <P108i_was_produced_by>
                   <E12_Production rdf:about="http://www.indiastudies.org/AIIS/production/{crm:idme($date)}">
                     <P4_has_time-span>
@@ -196,6 +197,7 @@
 			  </E21_Actor>
 		      </P14_carried_out_by>
 		    </xsl:if>
+		    <xsl:if test="period">
 		    <P10_falls_within>
                       <E4_period rdf:about="http://www.indiastudies.org/AIIS/period/{crm:idme(period)}">
                         <rdfs:label>
@@ -203,6 +205,7 @@
                         </rdfs:label>
                       </E4_period>
                     </P10_falls_within>
+		    </xsl:if>
                     <xsl:if test="ce_date_insc_date">
                       <P4_has_time-span>
                         <E52_Time-Span rdf:about="http://www.indiastudies.org/AIIS/date/{crm:idme(ce_date_insc_date)}">
@@ -359,24 +362,29 @@
 
   <xsl:template name="site">
     <P89_falls_within xmlns="http://www.cidoc-crm.org/cidoc-crm/" >
-      <xsl:variable name="site" select="crm:idme(site_sub-site2nd_name)"/>
-      <E53_Place rdf:about="http://www.indiastudies.org/AIIS/site/{$site}">
+      <xsl:variable name="site" select="site_sub-site2nd_name"/>
+      <E53_Place rdf:about="http://www.indiastudies.org/AIIS/site/{crm:idme($site)}">
         <P87_is_identified_by>
-          <E44_Place_Appelation rdf:about="http://www.indiastudies.org/AIIS/placename/{$site}">
+          <E44_Place_Appelation rdf:about="http://www.indiastudies.org/AIIS/placename/{crm:idme($site)}">
             <rdfs:label>
-              <xsl:value-of select="site_sub-site2nd_name"/>
+              <xsl:value-of select="$site"/>
             </rdfs:label>
           </E44_Place_Appelation>
         </P87_is_identified_by>
         <xsl:for-each select="doc('/Users/rahtz/SVN/Claros/tdb_builder/data/verbatim/metamorphoses-places.rdf')">
 
-         <xsl:variable name="n"  select="concat('http://id.clarosnet.org/places/metamorphoses/place/india-',$site)"/>
-         <xsl:variable name="n2"  select="concat('http://id.clarosnet.org/places/metamorphoses/place/',$site)"/>
-	 <xsl:message>Look up <xsl:value-of select="$site"/></xsl:message>
-          <xsl:for-each select=".//crm:E53_Place[@rdf:about=$n or @rdf:about=$n2]">
-	    <xsl:message>Found <xsl:value-of select="$site"/></xsl:message>
-            <xsl:copy-of select="crm:P87_is_identified_by[crm:E47_Place_Spatial_Coordinates]"/>
-          </xsl:for-each>
+         <xsl:variable name="n"  select="concat('http://id.clarosnet.org/places/metamorphoses/place/india-',crm:idme($site))"/>
+         <xsl:variable name="n2"  select="concat('http://id.clarosnet.org/places/metamorphoses/place/',crm:idme($site))"/>
+	 <xsl:choose>
+	   <xsl:when test=".//crm:E53_Place[@rdf:about=$n or @rdf:about=$n2]">
+	     <xsl:for-each select=".//crm:E53_Place[@rdf:about=$n or @rdf:about=$n2]">
+               <xsl:copy-of select="crm:P87_is_identified_by[crm:E47_Place_Spatial_Coordinates]"/>
+             </xsl:for-each>
+	   </xsl:when>
+	   <xsl:otherwise>	       
+	     <xsl:message>MISSING <xsl:value-of select="$site"/></xsl:message>
+	   </xsl:otherwise>
+	 </xsl:choose>
         </xsl:for-each>
       </E53_Place>
     </P89_falls_within>
