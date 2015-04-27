@@ -1,8 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xsl:stylesheet xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:rso="http://www.researchspace.org/ontology/" exclude-result-prefixes="xs tei skos owl xsd rso" version="2.0">
+<xsl:stylesheet xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+		xmlns:claros="http://purl.org/NET/Claros/vocab#"
+		xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+		xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+		xmlns:owl="http://www.w3.org/2002/07/owl#"
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+		xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/"
+		xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		xmlns:tei="http://www.tei-c.org/ns/1.0"
+		xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+		xmlns:rso="http://www.researchspace.org/ontology/"
+		exclude-result-prefixes="rdf rdfs crm xs tei skos owl xsd claros rso" version="2.0">
   <xsl:output method="xml" indent="yes" encoding="utf-8"/>
   <xsl:param name="prefix">*</xsl:param>
-  <xsl:template match="/">
+
+  <xsl:key name="GEO" match="place" use="name"/>
+  
+    <xsl:variable name="geonames">
+      <places>
+	<!--
+	    eonameid         : integer id of record in geonames database
+name              : name of geographical point (utf8) varchar(200)
+asciiname         : name of geographical point in plain ascii characters, varchar(200)
+alternatenames    : alternatenames, comma separated, ascii names automatically transliterated, convenience attribute from alternatename table, varchar(10000)
+latitude          : latitude in decimal degrees (wgs84)
+longitude         : longitude in decimal degrees (wgs84)
+feature class     : see http://www.geonames.org/export/codes.html, char(1)
+feature code      : see http://www.geonames.org/export/codes.html, varchar(10)
+country code      : ISO-3166 2-letter country code, 2 characters
+cc2               : alternate country codes, comma separated, ISO-3166 2-letter country code, 60 characters
+admin1 code       : fipscode (subject to change to iso code), see exceptions below, see file admin1Codes.txt for display names of this code; varchar(20)
+admin2 code       : code for the second administrative division, a county in the US, see file admin2Codes.txt; varchar(80) 
+admin3 code       : code for third level administrative division, varchar(20)
+admin4 code       : code for fourth level administrative division, varchar(20)
+population        : bigint (8 byte int) 
+elevation         : in meters, integer
+dem               : digital elevation model, srtm3 or gtopo30, average elevation of 3''x3'' (ca 90mx90m) or 30''x30'' (ca 900mx900m) area in meters, integer. srtm processed by cgiar/ciat.
+timezone          : the timezone id (see file timeZone.txt) varchar(40)
+modification date : date of last modification in yyyy-MM-dd format
+-->
+      <xsl:for-each select="tokenize(unparsed-text('IN.txt'),
+			    '\r?\n')">
+	<xsl:variable name="row" select="tokenize(.,'\|')"/>
+	<xsl:if test="starts-with($row[8],'PPL') or $row[8]='ANS' or
+	  $row[8]='HSTS' or $row[8]='RUIN'">
+	<place>
+	  <id><xsl:value-of select="$row[1]"/></id>
+	  <name><xsl:value-of select="$row[3]"/></name>
+	  <altnames><xsl:value-of select="$row[3]"/></altnames>
+	  <type><xsl:value-of select="$row[8]"/></type>
+	  <lat><xsl:value-of select="$row[5]"/></lat>
+	  <long><xsl:value-of select="$row[6]"/></long>
+	</place>
+	</xsl:if>
+      </xsl:for-each>
+      </places>
+    </xsl:variable>
+
+    <xsl:template match="/">
     <xsl:call-template name="main"/>
   </xsl:template>
   <xsl:template name="main">
@@ -10,6 +65,9 @@
       <xsl:value-of select="concat('.?select=',$prefix,'*.xml;recurse=yes;on-error=warning')"/>
     </xsl:variable>
     <xsl:variable name="docs" select="collection($pathlist)"/>
+    <xsl:result-document href="IN.xml">
+      <xsl:copy-of select="$geonames"/>
+    </xsl:result-document>
     <xsl:variable name="aiis">
       <aiis>
         <xsl:for-each select="$docs">
@@ -371,21 +429,32 @@
             </rdfs:label>
           </E44_Place_Appelation>
         </P87_is_identified_by>
-        <xsl:for-each select="doc('/Users/rahtz/SVN/Claros/tdb_builder/data/verbatim/metamorphoses-places.rdf')">
-
-         <xsl:variable name="n"  select="concat('http://id.clarosnet.org/places/metamorphoses/place/india-',crm:idme($site))"/>
-         <xsl:variable name="n2"  select="concat('http://id.clarosnet.org/places/metamorphoses/place/',crm:idme($site))"/>
 	 <xsl:choose>
-	   <xsl:when test=".//crm:E53_Place[@rdf:about=$n or @rdf:about=$n2]">
-	     <xsl:for-each select=".//crm:E53_Place[@rdf:about=$n or @rdf:about=$n2]">
-               <xsl:copy-of select="crm:P87_is_identified_by[crm:E47_Place_Spatial_Coordinates]"/>
-             </xsl:for-each>
+	   <xsl:when test="count($geonames/key('GEO',$site))=1">
+               <crm:P87_is_identified_by>
+		 <E47_Place_Spatial_Coordinates rdf:about="http://www.indiastudies.org/AIIS/coordinates/{crm:idme($site)}">
+               <claros:has_geoObject>
+                 <geo:Point
+		     xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+		     rdf:about="http://www.indiastudies.org/AIIS/points/{crm:idme($site)}">
+                   <geo:lat><xsl:value-of select="$geonames/key('GEO',$site)/lat"/></geo:lat>
+                   <geo:long><xsl:value-of select="$geonames/key('GEO',$site)/long"/></geo:long>
+                 </geo:Point>
+               </claros:has_geoObject>
+		 </E47_Place_Spatial_Coordinates>
+	       </crm:P87_is_identified_by>
+	   </xsl:when>
+
+	   <xsl:when test="contains($site,' (') and
+			   count($geonames/key('GEO',substring-before($site,' ')))=1">
+	     <P89_falls_within
+		 rdf:resource="http://www.indiastudies.org/AIIS/site/{crm:idme(substring-before($site,' '))}"/>
 	   </xsl:when>
 	   <xsl:otherwise>	       
 	     <xsl:message>MISSING <xsl:value-of select="$site"/></xsl:message>
 	   </xsl:otherwise>
 	 </xsl:choose>
-        </xsl:for-each>
+
       </E53_Place>
     </P89_falls_within>
   </xsl:template>
