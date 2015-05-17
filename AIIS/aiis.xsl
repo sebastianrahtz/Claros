@@ -431,7 +431,7 @@ modification date : date of last modification in yyyy-MM-dd format
         </P87_is_identified_by>
 	 <xsl:choose>
 	   <xsl:when test="count($geonames/key('GEO',$site))=1">
-               <crm:P87_is_identified_by>
+               <P87_is_identified_by>
 		 <E47_Place_Spatial_Coordinates rdf:about="http://www.indiastudies.org/AIIS/coordinates/{crm:idme($site)}">
                <claros:has_geoObject>
                  <geo:Point
@@ -442,7 +442,7 @@ modification date : date of last modification in yyyy-MM-dd format
                  </geo:Point>
                </claros:has_geoObject>
 		 </E47_Place_Spatial_Coordinates>
-	       </crm:P87_is_identified_by>
+	       </P87_is_identified_by>
 	   </xsl:when>
 
 	   <xsl:when test="contains($site,' (') and
