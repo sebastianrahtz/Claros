@@ -5,7 +5,7 @@
 		xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 		xmlns:owl="http://www.w3.org/2002/07/owl#"
 		xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-		xmlns:crm="http://www.cidoc-crm.org/cidoc-crm/"
+		xmlns:crm="http://www.cidoc-crm.org/cidoc-crm"
 		xmlns:xs="http://www.w3.org/2001/XMLSchema"
 		xmlns:tei="http://www.tei-c.org/ns/1.0"
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
